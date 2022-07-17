@@ -99,7 +99,7 @@ MonoBehaviour:
     sidewaysAsymptoteSlip: 0.25
     sidewaysAsymptoteValue: 0.75
   - behaviorName: Drift
-    steeringHelper: 0
+    steeringHelper: 1
     tractionHelper: 1
     angularDragHelper: 0
     counterSteering: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
     antiRollFrontHorizontalMinimum: 0
     antiRollRearHorizontalMinimum: 0
     gearShiftingDelayMaximum: 0.15
-    angularDrag: 0.5
+    angularDrag: 0.15
     angularDragHelperMinimum: 0.1
     angularDragHelperMaximum: 0.25
     forwardExtremumSlip: 0.4
