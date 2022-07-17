@@ -107,8 +107,8 @@ MonoBehaviour:
     ABS: 0
     ESP: 0
     TCS: 0
-    applyExternalWheelFrictions: 1
-    applyRelativeTorque: 1
+    applyExternalWheelFrictions: 0
+    applyRelativeTorque: 0
     highSpeedSteerAngleMinimum: 40
     highSpeedSteerAngleMaximum: 60
     highSpeedSteerAngleAtspeedMinimum: 100
