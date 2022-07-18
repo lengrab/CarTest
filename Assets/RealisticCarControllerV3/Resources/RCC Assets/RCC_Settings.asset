@@ -101,10 +101,10 @@ MonoBehaviour:
   - behaviorName: Drift
     steeringHelper: 1
     tractionHelper: 1
-    angularDragHelper: 0
+    angularDragHelper: 1
     counterSteering: 0
     limitSteering: 0
-    ABS: 0
+    ABS: 1
     ESP: 0
     TCS: 0
     applyExternalWheelFrictions: 1
@@ -115,18 +115,18 @@ MonoBehaviour:
     highSpeedSteerAngleAtspeedMaximum: 100
     counterSteeringMinimum: 0.5
     counterSteeringMaximum: 1
-    steerHelperAngularVelStrengthMinimum: 0
-    steerHelperAngularVelStrengthMaximum: 0
-    steerHelperLinearVelStrengthMinimum: 0
-    steerHelperLinearVelStrengthMaximum: 0
-    tractionHelperStrengthMinimum: 0
-    tractionHelperStrengthMaximum: 0
+    steerHelperAngularVelStrengthMinimum: 0.3
+    steerHelperAngularVelStrengthMaximum: 0.35
+    steerHelperLinearVelStrengthMinimum: 0.5
+    steerHelperLinearVelStrengthMaximum: 0.55
+    tractionHelperStrengthMinimum: 0.5
+    tractionHelperStrengthMaximum: 0.55
     antiRollFrontHorizontalMinimum: 0
     antiRollRearHorizontalMinimum: 0
     gearShiftingDelayMaximum: 0.15
-    angularDrag: 0.15
-    angularDragHelperMinimum: 0.1
-    angularDragHelperMaximum: 0.25
+    angularDrag: 0.2
+    angularDragHelperMinimum: 0.5
+    angularDragHelperMaximum: 0.65
     forwardExtremumSlip: 0.4
     forwardExtremumValue: 1
     forwardAsymptoteSlip: 1
