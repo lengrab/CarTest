@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -16,59 +16,59 @@ using System.Collections;
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Misc/RCC Mirror")]
 public class RCC_Mirror : MonoBehaviour {
 
-	private Camera cam;
-	private RCC_CarControllerV3 carController;
+    private Camera cam;
+    private RCC_CarControllerV3 carController;
 
-	void Awake(){
+    void Awake() {
 
-		InvertCamera ();
+        InvertCamera();
 
-	}
+    }
 
-	void OnEnable(){
+    void OnEnable() {
 
-		StartCoroutine (FixDepth());
+        StartCoroutine(FixDepth());
 
-	}
+    }
 
-	IEnumerator FixDepth(){
+    IEnumerator FixDepth() {
 
-		yield return new WaitForEndOfFrame ();
+        yield return new WaitForEndOfFrame();
 
-		cam.depth = 1f;
+        cam.depth = 1f;
 
-	}
-	
-	void InvertCamera () {
+    }
 
-		cam = GetComponent<Camera>();
+    void InvertCamera() {
 
-		cam.ResetWorldToCameraMatrix ();
-		cam.ResetProjectionMatrix ();
-		cam.projectionMatrix *= Matrix4x4.Scale(new Vector3(-1, 1, 1));
-		carController = GetComponentInParent<RCC_CarControllerV3>();
+        cam = GetComponent<Camera>();
 
-	}
-	
-	void OnPreRender () {
-		
-		GL.invertCulling = true;
+        cam.ResetWorldToCameraMatrix();
+        cam.ResetProjectionMatrix();
+        cam.projectionMatrix *= Matrix4x4.Scale(new Vector3(-1, 1, 1));
+        carController = GetComponentInParent<RCC_CarControllerV3>();
 
-	}
-	
-	void OnPostRender () {
-		
-		GL.invertCulling = false;
+    }
 
-	}
+    void OnPreRender() {
 
-	void Update(){
+        GL.invertCulling = true;
 
-		if(!cam)
-			return;
+    }
 
-		cam.enabled = carController.canControl;
+    void OnPostRender() {
 
-	}
+        GL.invertCulling = false;
+
+    }
+
+    void Update() {
+
+        if (!cam)
+            return;
+
+        cam.enabled = carController.canControl;
+
+    }
 
 }

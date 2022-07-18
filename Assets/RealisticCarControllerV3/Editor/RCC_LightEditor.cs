@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -16,155 +16,177 @@ using System.Collections.Generic;
 [CustomEditor(typeof(RCC_Light)), CanEditMultipleObjects]
 public class RCC_LightEditor : Editor {
 
-	RCC_Light prop;
+    RCC_Light prop;
 
-	Color originalGUIColor;
+    Color originalGUIColor;
 
-	public override void OnInspectorGUI (){
+    public override void OnInspectorGUI() {
 
-		originalGUIColor = GUI.color;
-		serializedObject.Update();
-		prop = (RCC_Light)target;
+        originalGUIColor = GUI.color;
+        prop = (RCC_Light)target;
+        serializedObject.Update();
 
-		CheckLights ();
+        CheckLights();
 
-		EditorGUILayout.Space();
-		EditorGUILayout.LabelField("RCC lights will receive inputs from parent car controller and adjusts intensity for lights. You can choose which type of light you want to use below. You won't need to specify left or right indicator lights.", EditorStyles.helpBox);
-		EditorGUILayout.LabelField("''Important'' or ''Not Important'' modes (Pixel or Vertex) overrided by RCC_Settings.", EditorStyles.helpBox);
-		EditorGUILayout.Space();
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("RCC lights will receive inputs from parent car controller and adjusts intensity for lights. You can choose which type of light you want to use below. You won't need to specify left or right indicator lights.", EditorStyles.helpBox);
+        EditorGUILayout.LabelField("''Important'' or ''Not Important'' modes (Pixel or Vertex) overrided by RCC_Settings.", EditorStyles.helpBox);
+        EditorGUILayout.Space();
 
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("lightType"), new GUIContent("Light Type"), false);
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("flare"), new GUIContent("Lens Flare"), false);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("lightType"), new GUIContent("Light Type"), false);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("inertia"), new GUIContent("Light Inertia"), false);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("flare"), new GUIContent("Lens Flare"), false);
 
-		if (!prop.GetComponent<LensFlare> ()) {
-			
-			if (GUILayout.Button ("Create LensFlare")) {
+        if (!prop.GetComponent<LensFlare>()) {
 
-				GameObject[] lights = Selection.gameObjects;
+            if (GUILayout.Button("Create LensFlare")) {
 
-				for (int i = 0; i < lights.Length; i++) {
+                GameObject[] lights = Selection.gameObjects;
 
-					if (lights [i].GetComponent<LensFlare> ())
-						break;
+                for (int i = 0; i < lights.Length; i++) {
 
-					lights[i].AddComponent<LensFlare> ();
-					LensFlare lf = lights[i].GetComponent<LensFlare> ();
-					lf.brightness = 0f;
-					lf.color = Color.white;
-					lf.fadeSpeed = 20f;
+                    if (lights[i].GetComponent<LensFlare>())
+                        break;
 
-				}
+                    lights[i].AddComponent<LensFlare>();
+                    LensFlare lf = lights[i].GetComponent<LensFlare>();
+                    lf.brightness = 0f;
+                    lf.color = Color.white;
+                    lf.fadeSpeed = 20f;
 
-			}
-			
-		} else {
+                }
 
-			EditorGUILayout.Space();
-			EditorGUILayout.LabelField("RCC uses ''Interpolation'' mode for all rigidbodies. Therefore, lights at front of the vehicle will blink while on high speeds. To fix this, select your RCC layer in LensFlare component as ignored layer. RCC_Light script will simulate lens flares depending on camera distance and angle.''.", EditorStyles.helpBox);
-			EditorGUILayout.Space();
+            }
 
-			EditorGUILayout.PropertyField(serializedObject.FindProperty("flareBrightness"), new GUIContent("Lens Flare Brightness"), false);
+        } else {
 
-		}
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("RCC uses ''Interpolation'' mode for all rigidbodies. Therefore, lights at front of the vehicle will blink while on high speeds. To fix this, select your RCC layer in LensFlare component as ignored layer. RCC_Light script will simulate lens flares depending on camera distance and angle.''.", EditorStyles.helpBox);
+            EditorGUILayout.Space();
 
-		EditorGUILayout.PropertyField(serializedObject.FindProperty("inertia"), new GUIContent("Lens Flare Fade Speed"), false);
-			
-		EditorGUILayout.Space();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("flareBrightness"), new GUIContent("Lens Flare Brightness"), false);
 
-		if (!prop.GetComponentInChildren<TrailRenderer> ()) {
+        }
 
-			if (GUILayout.Button ("Create Trail")) {
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("inertia"), new GUIContent("Lens Flare Fade Speed"), false);
+        EditorGUILayout.Space();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("useEmissionTexture"), new GUIContent("Use Emission Texture"), false);
 
-				GameObject[] lights = Selection.gameObjects;
+        if (prop.useEmissionTexture) {
 
-				for (int i = 0; i < lights.Length; i++) {
+            EditorGUI.indentLevel++;
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("emission"), new GUIContent("Emission"), true);
+            EditorGUI.indentLevel--;
 
-					if (lights [i].GetComponentInChildren<TrailRenderer> ())
-						break;
+        }
 
-					GameObject newTrail = GameObject.Instantiate (RCC_Settings.Instance.lightTrailers, lights [i].transform.position, lights [i].transform.rotation, lights [i].transform);
-					newTrail.name = RCC_Settings.Instance.lightTrailers.name;
+        EditorGUILayout.Space();
 
-				}
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("isBreakable"), new GUIContent("Is Breakable"), false);
 
-			}
+        if (prop.isBreakable) {
 
-		} else {
+            EditorGUI.indentLevel++;
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("strength"), new GUIContent("Strength"), false);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("breakPoint"), new GUIContent("Break Point"), false);
+            EditorGUI.indentLevel--;
 
-			if (GUILayout.Button ("Select Trail"))
-				Selection.activeGameObject = prop.GetComponentInChildren<TrailRenderer> ().gameObject;
+        }
 
-		}
+        if (!prop.GetComponentInChildren<TrailRenderer>()) {
 
-		serializedObject.ApplyModifiedProperties();
-		
-		if(GUI.changed)
-			EditorUtility.SetDirty(prop);
+            if (GUILayout.Button("Create Trail")) {
 
-	}
+                GameObject[] lights = Selection.gameObjects;
 
-	void CheckLights(){
+                for (int i = 0; i < lights.Length; i++) {
 
-		if (!prop.gameObject.activeInHierarchy)
-			return;
+                    if (lights[i].GetComponentInChildren<TrailRenderer>())
+                        break;
 
-		if (prop.GetComponentInParent<RCC_CarControllerV3>() == null)
-			return;
+                    GameObject newTrail = GameObject.Instantiate(RCC_Settings.Instance.lightTrailers, lights[i].transform.position, lights[i].transform.rotation, lights[i].transform);
+                    newTrail.name = RCC_Settings.Instance.lightTrailers.name;
 
-		Vector3 relativePos = prop.GetComponentInParent<RCC_CarControllerV3>().transform.InverseTransformPoint (prop.transform.position);
+                }
 
-		if (relativePos.z > 0f) {
-			
-			if (Mathf.Abs (prop.transform.localRotation.y) > .5f) {
+            }
 
-				GUI.color = Color.red;
-				EditorGUILayout.HelpBox ("Lights is facing to wrong direction!", MessageType.Error);
-				GUI.color = originalGUIColor;
+        } else {
 
-				GUI.color = Color.green;
+            if (GUILayout.Button("Select Trail"))
+                Selection.activeGameObject = prop.GetComponentInChildren<TrailRenderer>().gameObject;
 
-				if (GUILayout.Button ("Fix Rotation"))
-					prop.transform.localRotation = Quaternion.identity;
+        }
 
-				GUI.color = originalGUIColor;
+        serializedObject.ApplyModifiedProperties();
 
-			}
+        if (GUI.changed)
+            EditorUtility.SetDirty(prop);
 
-		} else {
+    }
 
-			if (Mathf.Abs (prop.transform.localRotation.y) < .5f) {
+    void CheckLights() {
 
-				GUI.color = Color.red;
-				EditorGUILayout.HelpBox ("Lights is facing to wrong direction!", MessageType.Error);
-				GUI.color = originalGUIColor;
+        if (!prop.gameObject.activeInHierarchy)
+            return;
 
-				GUI.color = Color.green;
+        if (prop.GetComponentInParent<RCC_CarControllerV3>() == null)
+            return;
 
-				if (GUILayout.Button ("Fix Rotation"))
-					prop.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+        Vector3 relativePos = prop.GetComponentInParent<RCC_CarControllerV3>().transform.InverseTransformPoint(prop.transform.position);
 
-				GUI.color = originalGUIColor;
+        if (relativePos.z > 0f) {
 
-			}
+            if (Mathf.Abs(prop.transform.localRotation.y) > .5f) {
 
-		}
+                GUI.color = Color.red;
+                EditorGUILayout.HelpBox("Lights is facing to wrong direction!", MessageType.Error);
+                GUI.color = originalGUIColor;
 
-		if (!EditorApplication.isPlaying) {
+                GUI.color = Color.green;
 
-			GameObject[] lights = Selection.gameObjects;
+                if (GUILayout.Button("Fix Rotation"))
+                    prop.transform.localRotation = Quaternion.identity;
 
-			for (int i = 0; i < lights.Length; i++) {
+                GUI.color = originalGUIColor;
 
-				if (lights[i].GetComponent<Light> ().flare != null)
-					lights[i].GetComponent<Light> ().flare = null;
+            }
 
-				if (lights[i].GetComponent<LensFlare> ())
-					lights[i].GetComponent<LensFlare> ().brightness = 0f;
+        } else {
 
-			}
-			
-		}
+            if (Mathf.Abs(prop.transform.localRotation.y) < .5f) {
 
-	}
+                GUI.color = Color.red;
+                EditorGUILayout.HelpBox("Lights is facing to wrong direction!", MessageType.Error);
+                GUI.color = originalGUIColor;
+
+                GUI.color = Color.green;
+
+                if (GUILayout.Button("Fix Rotation"))
+                    prop.transform.localRotation = Quaternion.Euler(0f, 180f, 0f);
+
+                GUI.color = originalGUIColor;
+
+            }
+
+        }
+
+        if (!EditorApplication.isPlaying) {
+
+            GameObject[] lights = Selection.gameObjects;
+
+            for (int i = 0; i < lights.Length; i++) {
+
+                if (lights[i].GetComponent<Light>().flare != null)
+                    lights[i].GetComponent<Light>().flare = null;
+
+                if (lights[i].GetComponent<LensFlare>())
+                    lights[i].GetComponent<LensFlare>().brightness = 0f;
+
+            }
+
+        }
+
+    }
 
 }

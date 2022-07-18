@@ -12,17 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7756f06ac1b082e4bb1697f768a5a41f, type: 3}
   m_Name: RCC_Settings
   m_EditorClassIdentifier: 
-  controllerSelectedIndex: 0
   behaviorSelectedIndex: 2
   overrideBehavior: 1
   overrideFPS: 1
   overrideFixedTimeStep: 1
   fixedTimeStep: 0.01
-  maxAngularVelocity: 15.06
+  maxAngularVelocity: 10.7
   maxFPS: 60
   useFixedWheelColliders: 1
   lockAndUnlockCursor: 0
-  controllerType: 0
   behaviorTypes:
   - behaviorName: Simulator
     steeringHelper: 1
@@ -30,6 +28,8 @@ MonoBehaviour:
     angularDragHelper: 1
     counterSteering: 0
     limitSteering: 1
+    steeringSensitivity: 1
+    steeringType: 0
     ABS: 1
     ESP: 1
     TCS: 1
@@ -41,6 +41,8 @@ MonoBehaviour:
     highSpeedSteerAngleAtspeedMaximum: 350
     counterSteeringMinimum: 0.1
     counterSteeringMaximum: 1
+    steeringSensitivityMinimum: 0.1
+    steeringSensitivityMaximum: 1
     steerHelperAngularVelStrengthMinimum: 0.1
     steerHelperAngularVelStrengthMaximum: 0.1
     steerHelperLinearVelStrengthMinimum: 0.1
@@ -67,6 +69,8 @@ MonoBehaviour:
     angularDragHelper: 1
     counterSteering: 0
     limitSteering: 1
+    steeringSensitivity: 1
+    steeringType: 0
     ABS: 1
     ESP: 1
     TCS: 1
@@ -78,6 +82,8 @@ MonoBehaviour:
     highSpeedSteerAngleAtspeedMaximum: 350
     counterSteeringMinimum: 0.1
     counterSteeringMaximum: 0.5
+    steeringSensitivityMinimum: 0.5
+    steeringSensitivityMaximum: 1
     steerHelperAngularVelStrengthMinimum: 0.25
     steerHelperAngularVelStrengthMaximum: 1
     steerHelperLinearVelStrengthMinimum: 0.25
@@ -101,46 +107,52 @@ MonoBehaviour:
   - behaviorName: Drift
     steeringHelper: 1
     tractionHelper: 1
-    angularDragHelper: 0
+    angularDragHelper: 1
     counterSteering: 0
     limitSteering: 0
+    steeringSensitivity: 1
+    steeringType: 1
     ABS: 0
     ESP: 0
     TCS: 0
-    applyExternalWheelFrictions: 0
-    applyRelativeTorque: 0
-    highSpeedSteerAngleMinimum: 40
-    highSpeedSteerAngleMaximum: 60
-    highSpeedSteerAngleAtspeedMinimum: 100
-    highSpeedSteerAngleAtspeedMaximum: 100
-    counterSteeringMinimum: 0.5
-    counterSteeringMaximum: 1
+    applyExternalWheelFrictions: 1
+    applyRelativeTorque: 1
+    highSpeedSteerAngleMinimum: 5
+    highSpeedSteerAngleMaximum: 3.63
+    highSpeedSteerAngleAtspeedMinimum: 120
+    highSpeedSteerAngleAtspeedMaximum: 120
+    counterSteeringMinimum: 0.25
+    counterSteeringMaximum: 0.25
+    steeringSensitivityMinimum: 1
+    steeringSensitivityMaximum: 1
     steerHelperAngularVelStrengthMinimum: 0
-    steerHelperAngularVelStrengthMaximum: 0
+    steerHelperAngularVelStrengthMaximum: 1
     steerHelperLinearVelStrengthMinimum: 0
-    steerHelperLinearVelStrengthMaximum: 0
+    steerHelperLinearVelStrengthMaximum: 1
     tractionHelperStrengthMinimum: 0
-    tractionHelperStrengthMaximum: 0
+    tractionHelperStrengthMaximum: 1
     antiRollFrontHorizontalMinimum: 0
     antiRollRearHorizontalMinimum: 0
     gearShiftingDelayMaximum: 0.15
-    angularDrag: 0.15
-    angularDragHelperMinimum: 0.1
-    angularDragHelperMaximum: 0.25
-    forwardExtremumSlip: 0.4
+    angularDrag: 0.69
+    angularDragHelperMinimum: 0.01
+    angularDragHelperMaximum: 1
+    forwardExtremumSlip: 0.45
     forwardExtremumValue: 1
-    forwardAsymptoteSlip: 1
+    forwardAsymptoteSlip: 0.5
     forwardAsymptoteValue: 1
-    sidewaysExtremumSlip: 0.4
+    sidewaysExtremumSlip: 0.45
     sidewaysExtremumValue: 1
     sidewaysAsymptoteSlip: 0.5
-    sidewaysAsymptoteValue: 0.8
+    sidewaysAsymptoteValue: 0.75
   - behaviorName: Semi Arcade
     steeringHelper: 1
     tractionHelper: 1
     angularDragHelper: 1
     counterSteering: 0
     limitSteering: 0
+    steeringSensitivity: 1
+    steeringType: 0
     ABS: 0
     ESP: 0
     TCS: 0
@@ -152,6 +164,8 @@ MonoBehaviour:
     highSpeedSteerAngleAtspeedMaximum: 350
     counterSteeringMinimum: 0
     counterSteeringMaximum: 0
+    steeringSensitivityMinimum: 1
+    steeringSensitivityMaximum: 1
     steerHelperAngularVelStrengthMinimum: 0.5
     steerHelperAngularVelStrengthMaximum: 1
     steerHelperLinearVelStrengthMinimum: 0.5
@@ -166,11 +180,11 @@ MonoBehaviour:
     angularDragHelperMaximum: 0.25
     forwardExtremumSlip: 0.2
     forwardExtremumValue: 2
-    forwardAsymptoteSlip: 2
+    forwardAsymptoteSlip: 0.2
     forwardAsymptoteValue: 2
     sidewaysExtremumSlip: 0.25
     sidewaysExtremumValue: 2
-    sidewaysAsymptoteSlip: 2
+    sidewaysAsymptoteSlip: 0.25
     sidewaysAsymptoteValue: 2
   - behaviorName: Fun
     steeringHelper: 1
@@ -178,6 +192,8 @@ MonoBehaviour:
     angularDragHelper: 1
     counterSteering: 0
     limitSteering: 0
+    steeringSensitivity: 1
+    steeringType: 0
     ABS: 0
     ESP: 0
     TCS: 0
@@ -189,6 +205,8 @@ MonoBehaviour:
     highSpeedSteerAngleAtspeedMaximum: 350
     counterSteeringMinimum: 0
     counterSteeringMaximum: 0
+    steeringSensitivityMinimum: 1
+    steeringSensitivityMaximum: 1
     steerHelperAngularVelStrengthMinimum: 1
     steerHelperAngularVelStrengthMaximum: 1
     steerHelperLinearVelStrengthMinimum: 1
@@ -203,98 +221,35 @@ MonoBehaviour:
     angularDragHelperMaximum: 0.5
     forwardExtremumSlip: 0.2
     forwardExtremumValue: 2
-    forwardAsymptoteSlip: 2
+    forwardAsymptoteSlip: 0.2
     forwardAsymptoteValue: 2
     sidewaysExtremumSlip: 0.2
     sidewaysExtremumValue: 2
-    sidewaysAsymptoteSlip: 2
+    sidewaysAsymptoteSlip: 0.2
     sidewaysAsymptoteValue: 2
-  verticalInput: Vertical
-  horizontalInput: Horizontal
-  mouseXInput: Mouse X
-  mouseYInput: Mouse Y
-  handbrakeKB: 32
-  startEngineKB: 105
-  lowBeamHeadlightsKB: 108
-  highBeamHeadlightsKB: 107
-  rightIndicatorKB: 101
-  leftIndicatorKB: 113
-  hazardIndicatorKB: 122
-  shiftGearUp: 304
-  shiftGearDown: 306
-  NGear: 110
-  boostKB: 102
-  slowMotionKB: 103
-  changeCameraKB: 99
-  recordKB: 114
-  playbackKB: 112
-  lookBackKB: 98
-  trailerAttachDetach: 116
-  Xbox_verticalInput: Xbox_Vertical
-  Xbox_horizontalInput: Xbox_Horizontal
-  Xbox_triggerLeftInput: Xbox_TriggerLeft
-  Xbox_triggerRightInput: Xbox_TriggerRight
-  Xbox_mouseXInput: Xbox_MouseX
-  Xbox_mouseYInput: Xbox_MouseY
-  Xbox_handbrakeKB: Xbox_B
-  Xbox_startEngineKB: Xbox_Y
-  Xbox_lowBeamHeadlightsKB: Xbox_LB
-  Xbox_highBeamHeadlightsKB: Xbox_RB
-  Xbox_indicatorKB: Xbox_DPadHorizontal
-  Xbox_hazardIndicatorKB: Xbox_DPadVertical
-  Xbox_shiftGearUp: Xbox_RB
-  Xbox_shiftGearDown: Xbox_LB
-  Xbox_boostKB: Xbox_A
-  Xbox_changeCameraKB: Xbox_Back
-  Xbox_lookBackKB: Xbox_ClickRight
-  Xbox_trailerAttachDetach: Xbox_ClickLeft
-  PS4_verticalInput: PS4_Vertical
-  PS4_horizontalInput: PS4_Horizontal
-  PS4_triggerLeftInput: PS4_TriggerLeft
-  PS4_triggerRightInput: PS4_TriggerRight
-  PS4_mouseXInput: PS4_MouseX
-  PS4_mouseYInput: PS4_MouseY
-  PS4_handbrakeKB: PS4_Circle
-  PS4_startEngineKB: 
-  PS4_lowBeamHeadlightsKB: PS4_Triangle
-  PS4_highBeamHeadlightsKB: PS4_Square
-  PS4_indicatorKB: PS4_DPadHorizontal
-  PS4_hazardIndicatorKB: PS4_DPadVertical
-  PS4_shiftGearUp: PS4_R1
-  PS4_shiftGearDown: PS4_L1
-  PS4_boostKB: PS4_X
-  PS4_changeCameraKB: PS4_Options
-  PS4_lookBackKB: PS4_ClickRight
-  PS4_trailerAttachDetach: PS4_ClickLeft
-  LogiSteeringWheel_handbrakeKB: 1
-  LogiSteeringWheel_startEngineKB: 10
-  LogiSteeringWheel_lowBeamHeadlightsKB: 9
-  LogiSteeringWheel_highBeamHeadlightsKB: 8
-  LogiSteeringWheel_hazardIndicatorKB: 3
-  LogiSteeringWheel_shiftGearUp: 4
-  LogiSteeringWheel_shiftGearDown: 5
-  LogiSteeringWheel_boostKB: 0
-  LogiSteeringWheel_changeCameraKB: 6
-  LogiSteeringWheel_lookBackKB: 7
-  useVR: 0
   useAutomaticGear: 1
   useAutomaticClutch: 1
   runEngineAtAwake: 1
   autoReverse: 1
   autoReset: 1
   contactParticles: {fileID: 193332, guid: 863b5201aede3aa438ac7d962625d663, type: 3}
+  scratchParticles: {fileID: 193332, guid: 2ff0e422d9bf66249b14d124d7a2b3b0, type: 3}
+  wheelDeflateParticles: {fileID: 5240681609208784007, guid: de4704e3426ad794c9166d4f75ab33c4, type: 3}
   units: 0
   uiType: 0
   useTelemetry: 0
   mobileController: 0
-  UIButtonSensitivity: 3
-  UIButtonGravity: 5
+  mobileControllerEnabled: 0
+  UIButtonSensitivity: 10
+  UIButtonGravity: 10
   gyroSensitivity: 2
   useLightsAsVertexLights: 1
   useLightProjectorForLightingEffect: 0
   setTagsAndLayers: 1
-  RCCLayer: RCC
   RCCTag: Player
+  RCCLayer: RCC
+  WheelColliderLayer: RCC_WheelCollider
+  DetachablePartLayer: RCC_DetachablePart
   tagAllChildrenGameobjects: 0
   chassisJoint: {fileID: 116354, guid: a7e7b1406cded0e4cb52224eb5dc2d80, type: 3}
   exhaustGas: {fileID: 104134, guid: 46992adcb9d56714eb84164c8a965492, type: 3}
@@ -331,6 +286,9 @@ MonoBehaviour:
   reversingClip: {fileID: 8300000, guid: 504366e8a8a713b43b676259cd5a7b58, type: 3}
   windClip: {fileID: 8300000, guid: 6c7312d1af74e3f4599722894161fafc, type: 3}
   brakeClip: {fileID: 8300000, guid: 4b6a38decd073724fb0aebb87b9ae8ee, type: 3}
+  wheelDeflateClip: {fileID: 8300000, guid: faa704d83029a9647a2363b2237e4e19, type: 3}
+  wheelInflateClip: {fileID: 8300000, guid: 4ce6102d00c8375478c1f9b3b1ac6688, type: 3}
+  wheelFlatClip: {fileID: 8300000, guid: 26b58ff4d9777244a9095f50b4179eb7, type: 3}
   indicatorClip: {fileID: 8300000, guid: 64545518873b33e49b90fdf05c6ea7a6, type: 3}
   bumpClip: {fileID: 8300000, guid: 948b55abd80345b4aab96053dbe0c2ba, type: 3}
   NOSClip: {fileID: 8300000, guid: 671ef8e2c38263640974ec49dc696f10, type: 3}
@@ -345,7 +303,7 @@ MonoBehaviour:
   maxGearShiftingSoundVolume: 0.5
   maxCrashSoundVolume: 0.5
   maxWindSoundVolume: 1
-  maxBrakeSoundVolume: 0.494
+  maxBrakeSoundVolume: 0.5
   foldGeneralSettings: 1
   foldBehaviorSettings: 1
   foldControllerSettings: 1

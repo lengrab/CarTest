@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -12,84 +12,84 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class RCC_CameraCarSelection : MonoBehaviour{
+public class RCC_CameraCarSelection : MonoBehaviour {
 
-	public Transform target;
-	public float distance= 10.0f;
+    public Transform target;
+    public float distance = 10.0f;
 
-	public float xSpeed= 250f;
-	public float  ySpeed= 120f;
+    public float xSpeed = 250f;
+    public float ySpeed = 120f;
 
-	public float yMinLimit= -20f;
-	public float yMaxLimit= 80f;
+    public float yMinLimit = -20f;
+    public float yMaxLimit = 80f;
 
-	private float x= 0f;
-	private float y= 0f;
+    private float x = 0f;
+    private float y = 0f;
 
-	private bool selfTurn = true;
-	private float selfTurnTime = 0f;
+    private bool selfTurn = true;
+    private float selfTurnTime = 0f;
 
-	void Start (){
+    void Start() {
 
-		Vector3 angles= transform.eulerAngles;
-		x = angles.y;
-		y = angles.x;
+        Vector3 angles = transform.eulerAngles;
+        x = angles.y;
+        y = angles.x;
 
-	}
+    }
 
-	void LateUpdate (){
+    void LateUpdate() {
 
-		if (target) {
+        if (target) {
 
-			if(selfTurn)
-				x += xSpeed / 2f * Time.deltaTime;
+            if (selfTurn)
+                x += xSpeed / 2f * Time.deltaTime;
 
-			y = ClampAngle(y, yMinLimit, yMaxLimit);
+            y = ClampAngle(y, yMinLimit, yMaxLimit);
 
-			Quaternion rotation= Quaternion.Euler(y, x, 0);
-			Vector3 position= rotation * new Vector3(0f, 0f, -distance) + target.position;
+            Quaternion rotation = Quaternion.Euler(y, x, 0);
+            Vector3 position = rotation * new Vector3(0f, 0f, -distance) + target.position;
 
-			transform.rotation = rotation;
-			transform.position = position;
+            transform.rotation = rotation;
+            transform.position = position;
 
-			if (selfTurnTime <= 1f)
-				selfTurnTime += Time.deltaTime;
+            if (selfTurnTime <= 1f)
+                selfTurnTime += Time.deltaTime;
 
-			if (selfTurnTime >= 1f)
-				selfTurn = true;
+            if (selfTurnTime >= 1f)
+                selfTurn = true;
 
-		}
+        }
 
-	}
+    }
 
-	static float ClampAngle ( float angle ,   float min ,   float max  ){
+    static float ClampAngle(float angle, float min, float max) {
 
-		if (angle < -360)
-			angle += 360;
-		if (angle > 360)
-			angle -= 360;
-		return Mathf.Clamp (angle, min, max);
+        if (angle < -360)
+            angle += 360;
+        if (angle > 360)
+            angle -= 360;
+        return Mathf.Clamp(angle, min, max);
 
-	}
+    }
 
-	public void OnDrag(BaseEventData data){
-		
-		PointerEventData pointerData = data as PointerEventData;
+    public void OnDrag(BaseEventData data) {
 
-		x += pointerData.delta.x * xSpeed * 0.02f;
-		y -= pointerData.delta.y * ySpeed * 0.02f;
+        PointerEventData pointerData = data as PointerEventData;
 
-		y = ClampAngle(y, yMinLimit, yMaxLimit);
+        x += pointerData.delta.x * xSpeed * 0.02f;
+        y -= pointerData.delta.y * ySpeed * 0.02f;
 
-		Quaternion rotation= Quaternion.Euler(y, x, 0);
-		Vector3 position= rotation * new Vector3(0f, 0f, -distance) + target.position;
+        y = ClampAngle(y, yMinLimit, yMaxLimit);
 
-		transform.rotation = rotation;
-		transform.position = position;
+        Quaternion rotation = Quaternion.Euler(y, x, 0);
+        Vector3 position = rotation * new Vector3(0f, 0f, -distance) + target.position;
 
-		selfTurn = false;
-		selfTurnTime = 0f;
+        transform.rotation = rotation;
+        transform.position = position;
 
-	}
+        selfTurn = false;
+        selfTurnTime = 0f;
+
+    }
 
 }

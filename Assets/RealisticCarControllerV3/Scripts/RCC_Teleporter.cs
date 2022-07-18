@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -12,22 +12,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Misc/RCC Teleporter")]
-public class RCC_Teleporter : MonoBehaviour{
+public class RCC_Teleporter : MonoBehaviour {
 
-	public Transform spawnPoint;
-	
-	void OnTriggerEnter(Collider col){
+    public Transform spawnPoint;
 
-		if (col.isTrigger)
-			return;
+    void OnTriggerEnter(Collider col) {
 
-		RCC_CarControllerV3 carController = col.gameObject.GetComponentInParent<RCC_CarControllerV3> ();
+        if (col.isTrigger)
+            return;
 
-		if (!carController)
-			return;
+        RCC_CarControllerV3 carController = col.gameObject.GetComponentInParent<RCC_CarControllerV3>();
 
-		RCC.Transport (carController, spawnPoint.position, spawnPoint.rotation);
-		
-	}
+        if (!carController)
+            return;
+
+        RCC.Transport(carController, spawnPoint.position, spawnPoint.rotation);
+
+    }
 
 }

@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -17,28 +17,45 @@ using UnityEngine.EventSystems;
 /// Mobile UI Drag used for orbiting RCC Camera.
 /// </summary>
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/UI/Mobile/RCC UI Drag")]
-public class RCC_MobileUIDrag : MonoBehaviour, IDragHandler, IEndDragHandler{
+public class RCC_MobileUIDrag : MonoBehaviour, IDragHandler, IEndDragHandler {
 
-	private bool isPressing = false;
+    private bool isPressing = false;
 
-	public void OnDrag(PointerEventData data){
+    void Awake() {
 
-		if (RCC_Settings.Instance.selectedControllerType != RCC_Settings.ControllerType.Mobile)
-			return;
+        if (!RCC_Settings.Instance.mobileControllerEnabled) {
 
-		isPressing = true;
+            gameObject.SetActive(false);
+            return;
 
-		RCC_SceneManager.Instance.activePlayerCamera.OnDrag (data);
+        }
 
-	}
+    }
 
-	public void OnEndDrag(PointerEventData data){
+    public void OnDrag(PointerEventData data) {
 
-		if (RCC_Settings.Instance.selectedControllerType != RCC_Settings.ControllerType.Mobile)
-			return;
+        if (!RCC_Settings.Instance.mobileControllerEnabled)
+            return;
 
-		isPressing = false;
+        isPressing = true;
 
-	}
+        RCC_SceneManager.Instance.activePlayerCamera.OnDrag(data);
+
+    }
+
+    public void OnEndDrag(PointerEventData data) {
+
+        if (!RCC_Settings.Instance.mobileControllerEnabled)
+            return;
+
+        isPressing = false;
+
+    }
+
+    void OnDisable() {
+
+        isPressing = false;
+
+    }
 
 }

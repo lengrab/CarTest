@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -16,223 +16,207 @@ using System.Collections;
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Misc/RCC Exhaust")]
 public class RCC_Exhaust : RCC_Core {
 
-	// Getting an Instance of Main Shared RCC Settings.
-	#region RCC Settings Instance
+    private RCC_CarControllerV3 carController;
+    private ParticleSystem particle;
+    private ParticleSystem.EmissionModule emission;
+    public ParticleSystem flame;
+    private ParticleSystem.EmissionModule subEmission;
 
-	private RCC_Settings RCCSettingsInstance;
-	private RCC_Settings RCCSettings {
-		get {
-			if (RCCSettingsInstance == null) {
-				RCCSettingsInstance = RCC_Settings.Instance;
-				return RCCSettingsInstance;
-			}
-			return RCCSettingsInstance;
-		}
-	}
+    private Light flameLight;
+    private LensFlare lensFlare;
 
-	#endregion
+    public float flareBrightness = 1f;
+    private float finalFlareBrightness;
 
-	private RCC_CarControllerV3 carController;
-	private ParticleSystem particle;
-	private ParticleSystem.EmissionModule emission;
-	public ParticleSystem flame;
-	private ParticleSystem.EmissionModule subEmission;
+    public float flameTime = 0f;
+    private AudioSource flameSource;
 
-	private Light flameLight;
-	private LensFlare lensFlare;
+    public Color flameColor = Color.red;
+    public Color boostFlameColor = Color.blue;
 
-	public float flareBrightness = 1f;
-	private float finalFlareBrightness;
+    public bool previewFlames = false;
 
-	public float flameTime = 0f;
-	private AudioSource flameSource;
+    public float minEmission = 5f;
+    public float maxEmission = 20f;
 
-	public Color flameColor = Color.red;
-	public Color boostFlameColor = Color.blue;
+    public float minSize = 1f;
+    public float maxSize = 4f;
 
-	public bool previewFlames = false;
+    public float minSpeed = .1f;
+    public float maxSpeed = 1f;
 
-	public float minEmission = 5f;
-	public float maxEmission = 50f;
+    void Start() {
 
-	public float minSize = 2.5f;
-	public float maxSize = 5f;
+        if (RCC_Settings.Instance.dontUseAnyParticleEffects) {
+            Destroy(gameObject);
+            return;
+        }
 
-	public float minSpeed = .5f;
-	public float maxSpeed = 5f;
+        carController = GetComponentInParent<RCC_CarControllerV3>();
+        particle = GetComponent<ParticleSystem>();
+        emission = particle.emission;
 
-	void Start () {
+        if (flame) {
 
-		if (RCCSettings.dontUseAnyParticleEffects) {
-			Destroy (gameObject);
-			return;
-		}
+            subEmission = flame.emission;
+            flameLight = flame.GetComponentInChildren<Light>();
+            flameSource = NewAudioSource(RCC_Settings.Instance.audioMixer, gameObject, "Exhaust Flame AudioSource", 10f, 25f, .5f, RCC_Settings.Instance.exhaustFlameClips[0], false, false, false);
 
-		carController = GetComponentInParent<RCC_CarControllerV3>();
-		particle = GetComponent<ParticleSystem>();
-		emission = particle.emission;
+            if (flameLight)
+                flameLight.renderMode = RCC_Settings.Instance.useLightsAsVertexLights ? LightRenderMode.ForceVertex : LightRenderMode.ForcePixel;
 
-		if(flame){
+        }
 
-			subEmission = flame.emission;
-			flameLight = flame.GetComponentInChildren<Light>();
-			flameSource = NewAudioSource(RCCSettings.audioMixer, gameObject, "Exhaust Flame AudioSource", 10f, 25f, .5f, RCCSettings.exhaustFlameClips[0], false, false, false);
+        lensFlare = GetComponentInChildren<LensFlare>();
 
-			if(flameLight)
-				flameLight.renderMode = RCCSettings.useLightsAsVertexLights ? LightRenderMode.ForceVertex : LightRenderMode.ForcePixel;
+        if (flameLight) {
 
-		}
+            if (flameLight.flare != null)
+                flameLight.flare = null;
 
-		lensFlare = GetComponentInChildren<LensFlare> ();
+        }
 
-		if (flameLight) {
+    }
 
-			if (flameLight.flare != null)
-				flameLight.flare = null;
+    void Update() {
 
-		}
+        if (!carController || !particle)
+            return;
 
-	}
+        Smoke();
+        Flame();
 
-	void Update () {
+        if (lensFlare)
+            LensFlare();
 
-		if(!carController || !particle)
-			return;
+    }
 
-		Smoke ();
-		Flame ();
+    void Smoke() {
 
-		if (lensFlare)
-			LensFlare ();
+        if (carController.engineRunning) {
 
-	}
+            var main = particle.main;
 
-	void Smoke(){
+            if (carController.speed < 20) {
 
-		if (carController.engineRunning) {
+                if (!emission.enabled)
+                    emission.enabled = true;
 
-			var main = particle.main;
+                if (carController.throttleInput > .35f) {
 
-			if (carController.speed < 20) {
+                    emission.rateOverTime = maxEmission;
+                    main.startSpeed = maxSpeed;
+                    main.startSize = maxSize;
 
-				if (!emission.enabled)
-					emission.enabled = true;
+                } else {
 
-				if (carController.throttleInput > .35f) {
+                    emission.rateOverTime = minEmission;
+                    main.startSpeed = minSpeed;
+                    main.startSize = minSize;
 
-					emission.rateOverTime = maxEmission;
-					main.startSpeed = maxSpeed;
-					main.startSize = maxSize;
+                }
 
-				} else {
-					
-					emission.rateOverTime = minEmission;
-					main.startSpeed = minSpeed;
-					main.startSize = minSize;
+            } else {
 
-				}
+                if (emission.enabled)
+                    emission.enabled = false;
 
-			} else {
+            }
 
-				if (emission.enabled)
-					emission.enabled = false;
+        } else {
 
-			}
+            if (emission.enabled)
+                emission.enabled = false;
 
-		} else {
+        }
 
-			if (emission.enabled)
-				emission.enabled = false;
+    }
 
-		}
+    void Flame() {
 
-	}
+        if (carController.engineRunning) {
 
-	void Flame(){
+            var main = flame.main;
 
-		if(carController.engineRunning){
+            if (carController.throttleInput >= .25f)
+                flameTime = 0f;
 
-			var main = flame.main;
+            if (((carController.useExhaustFlame && carController.engineRPM >= 5000 && carController.engineRPM <= 5500 && carController.throttleInput <= .25f && flameTime <= .5f) || carController.boostInput >= .75f) || previewFlames) {
 
-			if(carController.throttleInput >= .25f)
-				flameTime = 0f;
+                flameTime += Time.deltaTime;
+                subEmission.enabled = true;
 
-			if(((carController.useExhaustFlame && carController.engineRPM >= 5000 && carController.engineRPM <= 5500 && carController.throttleInput <= .25f && flameTime <= .5f) || carController.boostInput >= .75f) || previewFlames){
+                if (flameLight)
+                    flameLight.intensity = flameSource.pitch * 3f * Random.Range(.25f, 1f);
 
-				flameTime += Time.deltaTime;
-				subEmission.enabled = true;
+                if (carController.boostInput >= .75f && flame) {
 
-				if(flameLight)
-					flameLight.intensity = flameSource.pitch * 3f * Random.Range(.25f, 1f) ;
+                    main.startColor = boostFlameColor;
 
-				if(carController.boostInput >= .75f && flame){
+                    if (flameLight)
+                        flameLight.color = main.startColor.color;
 
-					main.startColor = boostFlameColor;
+                } else {
 
-					if(flameLight)
-						flameLight.color = main.startColor.color;
+                    main.startColor = flameColor;
 
-				}else{
+                    if (flameLight)
+                        flameLight.color = main.startColor.color;
 
-					main.startColor = flameColor;
+                }
 
-					if(flameLight)
-						flameLight.color = main.startColor.color;
+                if (!flameSource.isPlaying) {
 
-				}
+                    flameSource.clip = RCC_Settings.Instance.exhaustFlameClips[Random.Range(0, RCC_Settings.Instance.exhaustFlameClips.Length)];
+                    flameSource.Play();
 
-				if(!flameSource.isPlaying){
+                }
 
-					flameSource.clip = RCCSettings.exhaustFlameClips[Random.Range(0, RCCSettings.exhaustFlameClips.Length)];
-					flameSource.Play();
+            } else {
 
-				}
+                subEmission.enabled = false;
 
-			}else{
+                if (flameLight)
+                    flameLight.intensity = 0f;
+                if (flameSource.isPlaying)
+                    flameSource.Stop();
 
-				subEmission.enabled = false;
+            }
 
-				if(flameLight)
-					flameLight.intensity = 0f;
-				if(flameSource.isPlaying)
-					flameSource.Stop();
+        } else {
 
-			}
+            if (emission.enabled)
+                emission.enabled = false;
 
-		}else{
+            subEmission.enabled = false;
 
-			if(emission.enabled)
-				emission.enabled = false;
+            if (flameLight)
+                flameLight.intensity = 0f;
+            if (flameSource.isPlaying)
+                flameSource.Stop();
 
-			subEmission.enabled = false;
+        }
 
-			if(flameLight)
-				flameLight.intensity = 0f;
-			if(flameSource.isPlaying)
-				flameSource.Stop();
+    }
 
-		}
+    private void LensFlare() {
 
-	}
+        if (!RCC_SceneManager.Instance.activePlayerCamera)
+            return;
 
-	private void LensFlare(){
+        float distanceTocam = Vector3.Distance(transform.position, RCC_SceneManager.Instance.activePlayerCamera.actualCamera.transform.position);
+        float angle = Vector3.Angle(transform.forward, RCC_SceneManager.Instance.activePlayerCamera.actualCamera.transform.position - transform.position);
 
-		if (!RCC_SceneManager.Instance.activePlayerCamera)
-			return;
+        if (angle != 0)
+            finalFlareBrightness = flareBrightness * (4 / distanceTocam) * ((100f - (1.11f * angle)) / 100f) / 2f;
 
-		float distanceTocam = Vector3.Distance(transform.position, RCC_SceneManager.Instance.activePlayerCamera.thisCam.transform.position);
-		float angle = Vector3.Angle(transform.forward,  RCC_SceneManager.Instance.activePlayerCamera.thisCam.transform.position - transform.position);
+        if (flameLight) {
 
-		if(angle != 0)
-			finalFlareBrightness = flareBrightness * (4 / distanceTocam) * ((100f - (1.11f * angle)) / 100f) / 2f;
+            lensFlare.brightness = finalFlareBrightness * flameLight.intensity;
+            lensFlare.color = flameLight.color;
 
-		if (flameLight) {
+        }
 
-			lensFlare.brightness = finalFlareBrightness * flameLight.intensity;
-			lensFlare.color = flameLight.color;
-
-		}
-
-	}
+    }
 
 }

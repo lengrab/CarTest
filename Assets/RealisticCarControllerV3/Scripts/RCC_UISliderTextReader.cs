@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -17,26 +17,26 @@ using System.Collections;
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/UI/RCC UI Slider Text Reader")]
 public class RCC_UISliderTextReader : MonoBehaviour {
 
-	public Slider slider;
-	public Text text;
+    public Slider slider;
+    public Text text;
 
-	void Awake () {
+    void Awake() {
 
-		if(!slider)
-			slider = GetComponentInParent<Slider> ();
-		
-		if(!text)
-			text = GetComponentInChildren<Text> (); 
-	
-	}
+        if (!slider)
+            slider = GetComponentInParent<Slider>();
 
-	void Update () {
+        if (!text)
+            text = GetComponentInChildren<Text>();
 
-		if (!slider || !text)
-			return;
-		
-		text.text = slider.value.ToString ("F1");
+    }
 
-	}
+    void Update() {
+
+        if (!slider || !text)
+            return;
+
+        text.text = slider.value.ToString("F1");
+
+    }
 
 }

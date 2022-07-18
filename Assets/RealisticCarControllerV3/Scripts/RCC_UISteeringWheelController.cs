@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -18,184 +18,171 @@ using System.Collections;
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/UI/Mobile/RCC UI Steering Wheel")]
 public class RCC_UISteeringWheelController : MonoBehaviour {
 
-	// Getting an Instance of Main Shared RCC Settings.
-	#region RCC Settings Instance
+    private GameObject steeringWheelGameObject;
+    private Image steeringWheelTexture;
 
-	private RCC_Settings RCCSettingsInstance;
-	private RCC_Settings RCCSettings {
-		get {
-			if (RCCSettingsInstance == null) {
-				RCCSettingsInstance = RCC_Settings.Instance;
-				return RCCSettingsInstance;
-			}
-			return RCCSettingsInstance;
-		}
-	}
+    public float input = 0f;
+    private float steeringWheelAngle = 0f;
+    public float steeringWheelMaximumsteerAngle = 270f;
+    public float steeringWheelResetPosSpeed = 20f;
+    public float steeringWheelCenterDeadZoneRadius = 5f;
 
-	#endregion
+    private RectTransform steeringWheelRect;
+    private CanvasGroup steeringWheelCanvasGroup;
 
-	private GameObject steeringWheelGameObject;
-	private Image steeringWheelTexture;
+    private float steeringWheelTempAngle, steeringWheelNewAngle = 0f;
+    private bool steeringWheelPressed = false;
 
-	public float input = 0f;
-	public float steeringWheelAngle = 0f;
-	public float steeringWheelMaximumsteerAngle = 270f;
-	public float steeringWheelResetPosSpeed = 20f;	
-	public float steeringWheelCenterDeadZoneRadius = 5f;
+    private Vector2 steeringWheelCenter, steeringWheelTouchPos = new Vector2();
 
-	private RectTransform steeringWheelRect;
-	private CanvasGroup steeringWheelCanvasGroup;
+    private EventTrigger eventTrigger;
 
-	private float steeringWheelTempAngle, steeringWheelNewAngle;
-	private bool steeringWheelPressed;
+    void Awake() {
 
-	private Vector2 steeringWheelCenter, steeringWheelTouchPos;
+        //	Initializing the ui wheel with proper event triggers.
+        SteeringWheelInit();
 
-	private EventTrigger eventTrigger;
+    }
 
-	void Awake(){
+    void LateUpdate() {
 
-		steeringWheelTexture = GetComponent<Image>();
+        //	No need to go further if current controller is not mobile controller.
+        if (RCC_Settings.Instance.mobileController != RCC_Settings.MobileController.SteeringWheel)
+            return;
 
-	}
+        //	Visual steering wheel controlling.
+        SteeringWheelControlling();
 
-	void Update () {
+        //	Receiving input.
+        input = GetSteeringWheelInput();
 
-		if(RCCSettings.mobileController != RCC_Settings.MobileController.SteeringWheel)
-			return;
+    }
 
-		SteeringWheelInit();
-		SteeringWheelControlling();
-		input = GetSteeringWheelInput();
+    private void SteeringWheelInit() {
 
-	}
+        steeringWheelTexture = GetComponent<Image>();
 
-	void SteeringWheelInit(){
+        if (steeringWheelRect && !steeringWheelTexture)
+            return;
 
-		if (steeringWheelRect && !steeringWheelTexture)
-			return;
+        steeringWheelGameObject = steeringWheelTexture.gameObject;
+        steeringWheelRect = steeringWheelTexture.rectTransform;
+        steeringWheelCanvasGroup = steeringWheelTexture.GetComponent<CanvasGroup>();
+        steeringWheelCenter = steeringWheelRect.position;
 
-		steeringWheelGameObject = steeringWheelTexture.gameObject;
-		steeringWheelRect = steeringWheelTexture.rectTransform;
-		steeringWheelCanvasGroup = steeringWheelTexture.GetComponent<CanvasGroup> ();
-		steeringWheelCenter = steeringWheelRect.position;
-		
-		SteeringWheelEventsInit ();
+        SteeringWheelEventsInit();
 
-	}
+    }
 
-	//Events Initialization For Steering Wheel.
-	void SteeringWheelEventsInit(){
+    //Events Initialization For Steering Wheel.
+    private void SteeringWheelEventsInit() {
 
-		eventTrigger = steeringWheelGameObject.GetComponent<EventTrigger>();
-		
-		var a = new EventTrigger.TriggerEvent();
-		a.AddListener( data => 
-		              {
-			var evData = (PointerEventData)data;
-			data.Use();
-			
-			steeringWheelPressed = true;
-			steeringWheelTouchPos = evData.position;
-			steeringWheelTempAngle = Vector2.Angle(Vector2.up, evData.position - steeringWheelCenter);
-		});
-		
-		eventTrigger.triggers.Add(new EventTrigger.Entry{callback = a, eventID = EventTriggerType.PointerDown});
-		
-		
-		var b = new EventTrigger.TriggerEvent();
-		b.AddListener( data => 
-		              {
-			var evData = (PointerEventData)data;
-			data.Use();
-			steeringWheelTouchPos = evData.position;
-		});
-		
-		eventTrigger.triggers.Add(new EventTrigger.Entry{callback = b, eventID = EventTriggerType.Drag});
-		
-		
-		var c = new EventTrigger.TriggerEvent();
-		c.AddListener( data => 
-		              {
-			steeringWheelPressed = false;
-		});
-		
-		eventTrigger.triggers.Add(new EventTrigger.Entry{callback = c, eventID = EventTriggerType.EndDrag});
+        eventTrigger = steeringWheelGameObject.GetComponent<EventTrigger>();
 
-	}
+        var a = new EventTrigger.TriggerEvent();
+        a.AddListener(data => {
+            var evData = (PointerEventData)data;
+            data.Use();
 
-	public float GetSteeringWheelInput(){
+            steeringWheelPressed = true;
+            steeringWheelTouchPos = evData.position;
+            steeringWheelTempAngle = Vector2.Angle(Vector2.up, evData.position - steeringWheelCenter);
+        });
 
-		return Mathf.Round(steeringWheelAngle / steeringWheelMaximumsteerAngle * 100) / 100;
+        eventTrigger.triggers.Add(new EventTrigger.Entry { callback = a, eventID = EventTriggerType.PointerDown });
 
-	}
 
-	public bool isSteeringWheelPressed(){
+        var b = new EventTrigger.TriggerEvent();
+        b.AddListener(data => {
+            var evData = (PointerEventData)data;
+            data.Use();
+            steeringWheelTouchPos = evData.position;
+        });
 
-		return steeringWheelPressed;
+        eventTrigger.triggers.Add(new EventTrigger.Entry { callback = b, eventID = EventTriggerType.Drag });
 
-	}
 
-	public void SteeringWheelControlling (){
+        var c = new EventTrigger.TriggerEvent();
+        c.AddListener(data => {
+            steeringWheelPressed = false;
+        });
 
-		if(!steeringWheelCanvasGroup || !steeringWheelRect || RCCSettings.mobileController != RCC_Settings.MobileController.SteeringWheel){
-			
-			if(steeringWheelGameObject)
-				steeringWheelGameObject.SetActive(false);
-			
-			return;
+        eventTrigger.triggers.Add(new EventTrigger.Entry { callback = c, eventID = EventTriggerType.EndDrag });
 
-		}
+    }
 
-		if(!steeringWheelGameObject.activeSelf)
-			steeringWheelGameObject.SetActive(true);
+    public float GetSteeringWheelInput() {
 
-		if(steeringWheelPressed){
+        return Mathf.Round(steeringWheelAngle / steeringWheelMaximumsteerAngle * 100) / 100;
 
-			steeringWheelNewAngle = Vector2.Angle(Vector2.up, steeringWheelTouchPos - steeringWheelCenter);
+    }
 
-			if(Vector2.Distance( steeringWheelTouchPos, steeringWheelCenter ) > steeringWheelCenterDeadZoneRadius){
+    public bool IsPressed() {
 
-				if(steeringWheelTouchPos.x > steeringWheelCenter.x)
-					steeringWheelAngle += steeringWheelNewAngle - steeringWheelTempAngle;
-				else
-					steeringWheelAngle -= steeringWheelNewAngle - steeringWheelTempAngle;
+        return steeringWheelPressed;
 
-			}
+    }
 
-			if(steeringWheelAngle > steeringWheelMaximumsteerAngle)
-				steeringWheelAngle = steeringWheelMaximumsteerAngle;
-			else if(steeringWheelAngle < -steeringWheelMaximumsteerAngle)
-				steeringWheelAngle = -steeringWheelMaximumsteerAngle;
-			
-			steeringWheelTempAngle = steeringWheelNewAngle;
+    private void SteeringWheelControlling() {
 
-		}else{
+        if (!steeringWheelCanvasGroup || !steeringWheelRect || RCC_Settings.Instance.mobileController != RCC_Settings.MobileController.SteeringWheel) {
 
-			if(!Mathf.Approximately(0f, steeringWheelAngle)){
+            if (steeringWheelGameObject)
+                steeringWheelGameObject.SetActive(false);
 
-				float deltaAngle = steeringWheelResetPosSpeed;
-				
-				if(Mathf.Abs(deltaAngle) > Mathf.Abs(steeringWheelAngle)){
-					steeringWheelAngle = 0f;
-					return;
-				}
+            return;
 
-				steeringWheelAngle = Mathf.MoveTowards(steeringWheelAngle, 0f, deltaAngle * (Time.deltaTime * 100f));
+        }
 
-			}
+        if (!steeringWheelGameObject.activeSelf)
+            steeringWheelGameObject.SetActive(true);
 
-		}
+        if (steeringWheelPressed) {
 
-		steeringWheelRect.eulerAngles = new Vector3 (0f, 0f, -steeringWheelAngle);
-		
-	}
+            steeringWheelNewAngle = Vector2.Angle(Vector2.up, steeringWheelTouchPos - steeringWheelCenter);
 
-	void OnDisable(){
-		
-		steeringWheelPressed = false;
-		input = 0f;
+            if (Vector2.Distance(steeringWheelTouchPos, steeringWheelCenter) > steeringWheelCenterDeadZoneRadius) {
 
-	}
+                if (steeringWheelTouchPos.x > steeringWheelCenter.x)
+                    steeringWheelAngle += steeringWheelNewAngle - steeringWheelTempAngle;
+                else
+                    steeringWheelAngle -= steeringWheelNewAngle - steeringWheelTempAngle;
+
+            }
+
+            if (steeringWheelAngle > steeringWheelMaximumsteerAngle)
+                steeringWheelAngle = steeringWheelMaximumsteerAngle;
+            else if (steeringWheelAngle < -steeringWheelMaximumsteerAngle)
+                steeringWheelAngle = -steeringWheelMaximumsteerAngle;
+
+            steeringWheelTempAngle = steeringWheelNewAngle;
+
+        } else {
+
+            if (!Mathf.Approximately(0f, steeringWheelAngle)) {
+
+                float deltaAngle = steeringWheelResetPosSpeed;
+
+                if (Mathf.Abs(deltaAngle) > Mathf.Abs(steeringWheelAngle)) {
+                    steeringWheelAngle = 0f;
+                    return;
+                }
+
+                steeringWheelAngle = Mathf.MoveTowards(steeringWheelAngle, 0f, deltaAngle * (Time.deltaTime * 100f));
+
+            }
+
+        }
+
+        steeringWheelRect.eulerAngles = new Vector3(0f, 0f, -steeringWheelAngle);
+
+    }
+
+    void OnDisable() {
+
+        steeringWheelPressed = false;
+        input = 0f;
+
+    }
 
 }

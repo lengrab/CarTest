@@ -1,11 +1,20 @@
-﻿using System.Collections;
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2022 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// Suspension impact force based on axis controller.
 /// </summary>
-public class RCC_SuspensionBumper : MonoBehaviour{
+public class RCC_SuspensionBumper : MonoBehaviour {
 
     private RCC_CarControllerV3 carController;
 
@@ -43,7 +52,7 @@ public class RCC_SuspensionBumper : MonoBehaviour{
     private SuspensionWheel rearLeftWheel;
     private SuspensionWheel rearRightWheel;
 
-    void Start(){
+    void Start() {
 
         carController = GetComponent<RCC_CarControllerV3>();
 
@@ -73,25 +82,25 @@ public class RCC_SuspensionBumper : MonoBehaviour{
     }
 
     // Update is called once per frame
-    void Update(){
+    void Update() {
 
         if (!carController)
             return;
 
-        inputHorizontal = Input.GetAxisRaw("Suspension_Horizontal");
-        inputVertical = Input.GetAxisRaw("Suspension_Vertical");
+        //inputHorizontal = Input.GetAxisRaw("Suspension_Horizontal");
+        //inputVertical = Input.GetAxisRaw("Suspension_Vertical");
 
-        float targetSuspension_FL = Mathf.Clamp(targetSuspension * Mathf.Clamp01(inputHorizontal + (-inputVertical)), .05f, 1f);
-        frontLeftWheel.Move(targetSuspension_FL + frontLeftWheel.defaultSuspensionDistance);
+        //float targetSuspension_FL = Mathf.Clamp(targetSuspension * Mathf.Clamp01(inputHorizontal + (-inputVertical)), .05f, 1f);
+        //frontLeftWheel.Move(targetSuspension_FL + frontLeftWheel.defaultSuspensionDistance);
 
-        float targetSuspension_FR = Mathf.Clamp(targetSuspension * Mathf.Clamp01(-inputHorizontal + (-inputVertical)), .05f, 1f);
-        frontRightWheel.Move(targetSuspension_FR + frontRightWheel.defaultSuspensionDistance);
+        //float targetSuspension_FR = Mathf.Clamp(targetSuspension * Mathf.Clamp01(-inputHorizontal + (-inputVertical)), .05f, 1f);
+        //frontRightWheel.Move(targetSuspension_FR + frontRightWheel.defaultSuspensionDistance);
 
-        float targetSuspension_RL = Mathf.Clamp(targetSuspension * Mathf.Clamp01(inputHorizontal + (inputVertical)), .05f, 1f);
-        rearLeftWheel.Move(targetSuspension_RL + rearLeftWheel.defaultSuspensionDistance);
+        //float targetSuspension_RL = Mathf.Clamp(targetSuspension * Mathf.Clamp01(inputHorizontal + (inputVertical)), .05f, 1f);
+        //rearLeftWheel.Move(targetSuspension_RL + rearLeftWheel.defaultSuspensionDistance);
 
-        float targetSuspension_RR = Mathf.Clamp(targetSuspension * Mathf.Clamp01(-inputHorizontal + (inputVertical)), .05f, 1f);
-        rearRightWheel.Move(targetSuspension_RR + rearRightWheel.defaultSuspensionDistance);
+        //float targetSuspension_RR = Mathf.Clamp(targetSuspension * Mathf.Clamp01(-inputHorizontal + (inputVertical)), .05f, 1f);
+        //rearRightWheel.Move(targetSuspension_RR + rearRightWheel.defaultSuspensionDistance);
 
     }
 

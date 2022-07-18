@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -16,76 +16,56 @@ using UnityEngine.UI;
 /// Handles RCC Canvas dashboard elements.
 /// </summary>
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/UI/RCC UI Info Displayer")]
-[RequireComponent (typeof(Text))]
-public class RCC_InfoLabel : MonoBehaviour {
+[RequireComponent(typeof(Text))]
+public class RCC_InfoLabel : RCC_Singleton<RCC_InfoLabel> {
 
-	#region singleton
-	private static RCC_InfoLabel instance;
-	public static RCC_InfoLabel Instance{
+    private Text text;
+    private float timer = 1f;
 
-		get{
+    void Start() {
 
-			if (instance == null) {
+        text = GetComponent<Text>();
+        text.enabled = false;
 
-				if (GameObject.FindObjectOfType<RCC_InfoLabel> ())
-					instance = GameObject.FindObjectOfType<RCC_InfoLabel> ();
+    }
 
-			}
+    void Update() {
 
-			return instance;
+        if (timer < 1.5f) {
 
-		}
+            if (!text.enabled)
+                text.enabled = true;
 
-	}
-	#endregion
+        } else {
 
-	private Text text;
-	private float timer = 1f;
+            if (text.enabled)
+                text.enabled = false;
 
-	void Start () {
+        }
 
-		text = GetComponent<Text> ();
-		text.enabled = false;
-		
-	}
+        timer += Time.deltaTime;
 
-	void Update(){
+    }
 
-		if (timer < 1.5f) {
-			
-			if (!text.enabled)
-				text.enabled = true;
-			
-		} else {
-			
-			if (text.enabled)
-				text.enabled = false;
-			
-		}
+    public void ShowInfo(string info) {
 
-		timer += Time.deltaTime;
+        if (!text)
+            return;
 
-	}
+        text.text = info;
+        timer = 0f;
 
-	public void ShowInfo (string info) {
+        //		StartCoroutine (ShowInfoCo(info, time));
 
-		if (!text)
-			return;
+    }
 
-		text.text = info;
-		timer = 0f;
+    IEnumerator ShowInfoCo(string info, float time) {
 
-//		StartCoroutine (ShowInfoCo(info, time));
-		
-	}
+        text.enabled = true;
+        text.text = info;
+        yield return new WaitForSeconds(time);
+        text.enabled = false;
 
-	IEnumerator ShowInfoCo(string info, float time){
-
-		text.enabled = true;
-		text.text = info;
-		yield return new WaitForSeconds (time);
-		text.enabled = false;
-
-	}
+    }
 
 }

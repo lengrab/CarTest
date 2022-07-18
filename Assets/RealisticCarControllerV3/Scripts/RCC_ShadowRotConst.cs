@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -16,18 +16,18 @@ using System.Collections;
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Misc/RCC Shadow")]
 public class RCC_ShadowRotConst : MonoBehaviour {
 
-	private Transform root;
+    private Transform root;
 
-	void Start () {
+    void Start() {
 
-		root = GetComponentInParent<RCC_CarControllerV3>().transform;
-	
-	}
+        root = GetComponentInParent<RCC_CarControllerV3>().transform;
 
-	void Update () {
+    }
 
-		transform.rotation = Quaternion.Euler(90f, root.eulerAngles.y, 0f);
-	
-	}
+    void Update() {
+
+        transform.rotation = Quaternion.Euler(90f, root.eulerAngles.y, 0f);
+
+    }
 
 }

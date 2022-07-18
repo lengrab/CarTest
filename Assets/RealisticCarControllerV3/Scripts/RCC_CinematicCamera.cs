@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -14,50 +14,50 @@ using System.Collections;
 /// Tracks the player vehicle and keeps orientation nicely for cinematic angles. It has a pivot gameobject named "Animation Pivot". This pivot gameobject has 3 animations itself. 
 /// </summary>
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Camera/RCC Cinematic Camera")]
-public class RCC_CinematicCamera : MonoBehaviour {
+public class RCC_CinematicCamera : RCC_Singleton<RCC_CinematicCamera> {
 
-	public GameObject pivot;				// Animation Pivot.
-	private Vector3 targetPosition;		// Target position for tracking.
-	public float targetFOV = 60f;		// Target field of view.
+    public GameObject pivot;                // Animation Pivot.
+    private Vector3 targetPosition;     // Target position for tracking.
+    public float targetFOV = 60f;       // Target field of view.
 
-	void Start () {
+    void Start() {
 
-		// If pivot is not selected in Inspector Panel, create it.
-		if (!pivot) {
-			
-			pivot = new GameObject ("Pivot");
-			pivot.transform.SetParent (transform, false);
-			pivot.transform.localPosition = Vector3.zero;
-			pivot.transform.localRotation = Quaternion.identity;
+        // If pivot is not selected in Inspector Panel, create it.
+        if (!pivot) {
 
-		}
-	
-	}
+            pivot = new GameObject("Pivot");
+            pivot.transform.SetParent(transform, false);
+            pivot.transform.localPosition = Vector3.zero;
+            pivot.transform.localRotation = Quaternion.identity;
 
-	void Update () {
+        }
 
-		// If current camera is null, return.
-		if (!RCC_SceneManager.Instance.activePlayerCamera)
-			return;
+    }
 
-		Transform target = null;
+    void Update() {
 
-		if(RCC_SceneManager.Instance.activePlayerCamera.playerCar)
-			target = RCC_SceneManager.Instance.activePlayerCamera.playerCar.transform;
+        // If current camera is null, return.
+        if (!RCC_SceneManager.Instance.activePlayerCamera)
+            return;
 
-		if (target == null)
-			return;
+        Transform target = null;
 
-		// Rotates smoothly towards to vehicle.
-		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(transform.eulerAngles.x, target.eulerAngles.y + 180f, transform.eulerAngles.z), Time.deltaTime * 3f);
+        if (RCC_SceneManager.Instance.activePlayerCamera.cameraTarget.playerVehicle)
+            target = RCC_SceneManager.Instance.activePlayerCamera.cameraTarget.playerVehicle.transform;
 
-		// Calculating target position.
-		targetPosition = target.position;
-		targetPosition -= transform.rotation * Vector3.forward * 10f;
+        if (target == null)
+            return;
 
-		// Assigning transform.position to targetPosition.
-		transform.position = targetPosition;
+        // Rotates smoothly towards to vehicle.
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(transform.eulerAngles.x, target.eulerAngles.y + 180f, transform.eulerAngles.z), Time.deltaTime * 3f);
 
-	}
+        // Calculating target position.
+        targetPosition = target.position;
+        targetPosition -= transform.rotation * Vector3.forward * 10f;
+
+        // Assigning transform.position to targetPosition.
+        transform.position = targetPosition;
+
+    }
 
 }

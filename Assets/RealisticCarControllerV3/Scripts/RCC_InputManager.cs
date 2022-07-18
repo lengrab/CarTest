@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -11,171 +11,318 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+
+public class RCC_InputManager {
+
+    private static readonly RCC_Inputs inputs = new RCC_Inputs();
+    private static RCC_InputActions inputActions;
 
-[AddComponentMenu("BoneCracker Games/Realistic Car Controller/Misc/RCC Input Manager")]
-public class RCC_InputManager : MonoBehaviour{
+    public static bool gyroUsed = false;
+    public static bool logitechSteeringUsed = false;
+    public static bool logitechHShifterUsed = false;
+    public static int logitechGear = -2;
+
+    public delegate void onStartStopEngine();
+    public static event onStartStopEngine OnStartStopEngine;
+
+    public delegate void onLowBeamHeadlights();
+    public static event onLowBeamHeadlights OnLowBeamHeadlights;
+
+    public delegate void onHighBeamHeadlights();
+    public static event onHighBeamHeadlights OnHighBeamHeadlights;
+
+    public delegate void onChangeCamera();
+    public static event onChangeCamera OnChangeCamera;
+
+    public delegate void onIndicatorLeft();
+    public static event onIndicatorLeft OnIndicatorLeft;
+
+    public delegate void onIndicatorRight();
+    public static event onIndicatorRight OnIndicatorRight;
+
+    public delegate void onIndicatorHazard();
+    public static event onIndicatorHazard OnIndicatorHazard;
 
-	private static RCC_Inputs inputs = new RCC_Inputs();
+    public delegate void onGearShiftUp();
+    public static event onGearShiftUp OnGearShiftUp;
 
-	private enum InputState { None, Pressed, Held, Released };
+    public delegate void onGearShiftDown();
+    public static event onGearShiftDown OnGearShiftDown;
 
-	public static RCC_Inputs GetInputs(){
+    public delegate void onNGear(bool state);
+    public static event onNGear OnNGear;
 
-		switch (RCC_Settings.Instance.selectedControllerType) {
+    public delegate void onSlowMotion(bool state);
+    public static event onSlowMotion OnSlowMotion;
 
-		case RCC_Settings.ControllerType.Keyboard:
+    public delegate void onRecord();
+    public static event onRecord OnRecord;
 
-			inputs.throttleInput = Mathf.Clamp01(Input.GetAxis (RCC_Settings.Instance.verticalInput));
-			inputs.brakeInput = Mathf.Abs(Mathf.Clamp(Input.GetAxis (RCC_Settings.Instance.verticalInput), -1f, 0f));
-			inputs.steerInput = Mathf.Clamp(Input.GetAxis (RCC_Settings.Instance.horizontalInput), -1f, 1f);
-			inputs.handbrakeInput = Mathf.Clamp01(Input.GetKey (RCC_Settings.Instance.handbrakeKB) ? 1f : 0f);
-			inputs.boostInput = Mathf.Clamp01(Input.GetKey (RCC_Settings.Instance.boostKB) ? 1f : 0f);
+    public delegate void onReplay();
+    public static event onReplay OnReplay;
 
-			break;
+    public delegate void onLookBack(bool state);
+    public static event onLookBack OnLookBack;
 
-		case RCC_Settings.ControllerType.XBox360One:
+    public delegate void onTrailerDetach();
+    public static event onTrailerDetach OnTrailerDetach;
 
-			if(!string.IsNullOrEmpty(RCC_Settings.Instance.Xbox_triggerRightInput))
-				inputs.throttleInput = Input.GetAxis (RCC_Settings.Instance.Xbox_triggerRightInput);
+    public static RCC_Inputs GetInputs() {
 
-			if(!string.IsNullOrEmpty(RCC_Settings.Instance.Xbox_triggerLeftInput))
-				inputs.brakeInput = Input.GetAxis (RCC_Settings.Instance.Xbox_triggerLeftInput);
+        if (inputActions == null) {
 
-			if(!string.IsNullOrEmpty(RCC_Settings.Instance.Xbox_horizontalInput))
-				inputs.steerInput = Input.GetAxis (RCC_Settings.Instance.Xbox_horizontalInput);
+            inputActions = new RCC_InputActions();
+            inputActions.Enable();
 
-			if(!string.IsNullOrEmpty(RCC_Settings.Instance.Xbox_handbrakeKB))
-				inputs.handbrakeInput = Input.GetButton (RCC_Settings.Instance.Xbox_handbrakeKB) ? 1f : 0f;
+            inputActions.Vehicle.StartStopEngine.performed += StartStopEngine_performed;
+            inputActions.Vehicle.LowBeamLights.performed += LowBeamLights_performed;
+            inputActions.Vehicle.HighBeamLights.performed += HighBeamLights_performed;
+            inputActions.Camera.ChangeCamera.performed += ChangeCamera_performed;
+            inputActions.Vehicle.IndicatorLeft.performed += IndicatorLeft_performed;
+            inputActions.Vehicle.IndicatorRight.performed += IndicatorRight_performed;
+            inputActions.Vehicle.IndicatorHazard.performed += IndicatorHazard_performed;
+            inputActions.Vehicle.GearShiftUp.performed += GearShiftUp_performed;
+            inputActions.Vehicle.GearShiftDown.performed += GearShiftDown_performed;
+            inputActions.Vehicle.NGear.performed += NGear_performed;
+            inputActions.Vehicle.NGear.canceled += NGear_canceled;
+            inputActions.Optional.SlowMotion.performed += SlowMotion_performed;
+            inputActions.Optional.SlowMotion.canceled += SlowMotion_canceled;
+            inputActions.Optional.Record.performed += Record_performed;
+            inputActions.Optional.Replay.performed += Replay_performed;
+            inputActions.Camera.LookBack.performed += LookBack_performed;
+            inputActions.Camera.LookBack.canceled += LookBack_canceled;
+            inputActions.Vehicle.TrailerDetach.performed += TrailerDetach_performed;
 
-			if(!string.IsNullOrEmpty(RCC_Settings.Instance.Xbox_boostKB))
-				inputs.boostInput = Input.GetButton(RCC_Settings.Instance.Xbox_boostKB) ? 1f : 0f;
+#if RCC_LOGITECH
+            //	LOGITECH STEERING WHEEL INPUTS
+            inputActions.Vehicle._1stGear.performed += _1stGear_performed;
+            inputActions.Vehicle._2ndGear.performed += _2ndGear_performed;
+            inputActions.Vehicle._3rdGear.performed += _3rdGear_performed;
+            inputActions.Vehicle._4thGear.performed += _4thGear_performed;
+            inputActions.Vehicle._5thGear.performed += _5thGear_performed;
+            inputActions.Vehicle._6thGear.performed += _6thGear_performed;
+            inputActions.Vehicle.RGear.performed += _RGear_performed;
 
-			break;
+            inputActions.Vehicle._1stGear.canceled += _Gear_canceled;
+            inputActions.Vehicle._2ndGear.canceled += _Gear_canceled;
+            inputActions.Vehicle._3rdGear.canceled += _Gear_canceled;
+            inputActions.Vehicle._4thGear.canceled += _Gear_canceled;
+            inputActions.Vehicle._5thGear.canceled += _Gear_canceled;
+            inputActions.Vehicle._6thGear.canceled += _Gear_canceled;
+            inputActions.Vehicle.RGear.canceled += _Gear_canceled;
+#endif
 
-		case RCC_Settings.ControllerType.PS4:
+        }
 
-			if(!string.IsNullOrEmpty(RCC_Settings.Instance.PS4_triggerRightInput))
-				inputs.throttleInput = Mathf.Clamp01(Input.GetAxis(RCC_Settings.Instance.PS4_triggerRightInput));
+        if (!RCC_Settings.Instance.mobileControllerEnabled) {
 
-			if(!string.IsNullOrEmpty(RCC_Settings.Instance.PS4_triggerLeftInput))
-				inputs.brakeInput = Input.GetAxis(RCC_Settings.Instance.PS4_triggerLeftInput);
+            inputs.throttleInput = inputActions.Vehicle.Throttle.ReadValue<float>();
+            inputs.brakeInput = inputActions.Vehicle.Brake.ReadValue<float>();
+            inputs.steerInput = inputActions.Vehicle.Steering.ReadValue<float>();
+            inputs.handbrakeInput = inputActions.Vehicle.Handbrake.ReadValue<float>();
+            inputs.boostInput = inputActions.Vehicle.NOS.ReadValue<float>();
+            inputs.clutchInput = inputActions.Vehicle.Clutch.ReadValue<float>();
+            inputs.gearInput = logitechGear;
+            inputs.orbitX = inputActions.Camera.Orbit.ReadValue<Vector2>().x;
+            inputs.orbitY = inputActions.Camera.Orbit.ReadValue<Vector2>().y;
+            inputs.scroll = inputActions.Camera.Zoom.ReadValue<Vector2>();
 
-			if(!string.IsNullOrEmpty(RCC_Settings.Instance.PS4_horizontalInput))
-				inputs.steerInput = Input.GetAxis(RCC_Settings.Instance.PS4_horizontalInput);
+        } else {
 
-			if(!string.IsNullOrEmpty(RCC_Settings.Instance.PS4_handbrakeKB))
-				inputs.handbrakeInput = Input.GetButton(RCC_Settings.Instance.PS4_handbrakeKB) ? 1f : 0f;
+            inputs.throttleInput = RCC_MobileButtons.mobileInputs.throttleInput;
+            inputs.brakeInput = RCC_MobileButtons.mobileInputs.brakeInput;
+            inputs.steerInput = RCC_MobileButtons.mobileInputs.steerInput;
+            inputs.handbrakeInput = RCC_MobileButtons.mobileInputs.handbrakeInput;
+            inputs.boostInput = RCC_MobileButtons.mobileInputs.boostInput;
 
-			if(!string.IsNullOrEmpty(RCC_Settings.Instance.PS4_boostKB))
-				inputs.boostInput = Input.GetButton(RCC_Settings.Instance.PS4_boostKB) ? 1f : 0f;
+        }
 
-			break;
+        return inputs;
 
-			case RCC_Settings.ControllerType.Mobile:
+    }
 
-			RCC_MobileButtons mobileInput = RCC_MobileButtons.Instance;
+#if RCC_LOGITECH
+    //	LOGITECH H SHIFTER INPUTS
+    private static void _1stGear_performed(InputAction.CallbackContext obj) {
 
-			if (mobileInput) {
-				
-				inputs.throttleInput = RCC_MobileButtons.Instance.inputs.throttleInput;
-				inputs.brakeInput = RCC_MobileButtons.Instance.inputs.brakeInput;
-				inputs.steerInput = RCC_MobileButtons.Instance.inputs.steerInput;
-				inputs.handbrakeInput = RCC_MobileButtons.Instance.inputs.handbrakeInput;
-				inputs.boostInput = RCC_MobileButtons.Instance.inputs.boostInput;
+        logitechHShifterUsed = true;
+        logitechGear = 0;
 
-			}
+    }
 
-			break;
+    private static void _Gear_canceled(InputAction.CallbackContext obj) {
 
-		case RCC_Settings.ControllerType.LogitechSteeringWheel:
+        logitechGear = -2;
 
-			#if RCC_LOGITECH
-			RCC_LogitechSteeringWheel log = RCC_LogitechSteeringWheel.Instance;
+    }
 
-			if (log) {
+    private static void _2ndGear_performed(InputAction.CallbackContext obj) {
 
-				inputs.throttleInput = log.inputs.throttleInput;
-				inputs.brakeInput = log.inputs.brakeInput;
-				inputs.steerInput = log.inputs.steerInput;
-				inputs.clutchInput = log.inputs.clutchInput;
-				inputs.handbrakeInput = log.inputs.handbrakeInput;
+        logitechHShifterUsed = true;
+        logitechGear = 1;
 
-			}
-			#endif
+    }
 
-			break;
+    private static void _3rdGear_performed(InputAction.CallbackContext obj) {
 
-		case RCC_Settings.ControllerType.Custom:
+        logitechHShifterUsed = true;
+        logitechGear = 2;
 
-			// You can use your own inputs with Custom controller type here.
+    }
 
-//			inputs.throttleInput = "yourValue";
-//			inputs.brakeInput = "yourValue";
-//			inputs.steerInput = "yourValue";
-//			inputs.boostInput = "yourValue";
-//			inputs.clutchInput = "yourValue";
-//			inputs.handbrakeInput = "yourValue";
+    private static void _4thGear_performed(InputAction.CallbackContext obj) {
 
-			break;
+        logitechHShifterUsed = true;
+        logitechGear = 3;
 
-		}
+    }
 
-		return inputs;
+    private static void _5thGear_performed(InputAction.CallbackContext obj) {
 
-	}
+        logitechHShifterUsed = true;
+        logitechGear = 4;
 
-	public static bool GetKeyDown(KeyCode keyCode){
+    }
 
-		if (Input.GetKeyDown (keyCode))
-			return true;
+    private static void _6thGear_performed(InputAction.CallbackContext obj) {
 
-		return false;
+        logitechHShifterUsed = true;
+        logitechGear = 5;
 
-	}
+    }
 
-	public static bool GetKeyUp(KeyCode keyCode){
+    private static void _RGear_performed(InputAction.CallbackContext obj) {
 
-		if (Input.GetKeyUp (keyCode))
-			return true;
+        logitechHShifterUsed = true;
+        logitechGear = -1;
 
-		return false;
+    }
+#endif
+    private static void StartStopEngine_performed(InputAction.CallbackContext obj) {
 
-	}
+        if (OnStartStopEngine != null)
+            OnStartStopEngine();
 
-	public static bool GetKey(KeyCode keyCode){
+    }
 
-		if (Input.GetKey (keyCode))
-			return true;
+    private static void TrailerDetach_performed(InputAction.CallbackContext obj) {
 
-		return false;
+        if (OnTrailerDetach != null)
+            OnTrailerDetach();
 
-	}
+    }
 
-	public static bool GetButtonDown(string buttonCode){
+    private static void LookBack_performed(InputAction.CallbackContext obj) {
 
-		if (Input.GetButtonDown (buttonCode))
-			return true;
+        if (OnLookBack != null)
+            OnLookBack(true);
 
-		return false;
+    }
 
-	}
+    private static void LookBack_canceled(InputAction.CallbackContext obj) {
 
-	public static bool GetButtonUp(string buttonCode){
+        if (OnLookBack != null)
+            OnLookBack(false);
 
-		if (Input.GetButtonUp (buttonCode))
-			return true;
+    }
 
-		return false;
+    private static void Replay_performed(InputAction.CallbackContext obj) {
 
-	}
+        if (OnReplay != null)
+            OnReplay();
 
-	public static bool GetButton(string buttonCode){
+    }
 
-		if (Input.GetButton (buttonCode))
-			return true;
+    private static void Record_performed(InputAction.CallbackContext obj) {
 
-		return false;
+        if (OnRecord != null)
+            OnRecord();
 
-	}
+    }
+
+    private static void SlowMotion_performed(InputAction.CallbackContext obj) {
+
+        if (OnSlowMotion != null)
+            OnSlowMotion(true);
+
+    }
+
+    private static void SlowMotion_canceled(InputAction.CallbackContext obj) {
+
+        if (OnSlowMotion != null)
+            OnSlowMotion(false);
+
+    }
+
+    private static void NGear_performed(InputAction.CallbackContext obj) {
+
+        if (OnNGear != null)
+            OnNGear(true);
+
+    }
+
+    private static void NGear_canceled(InputAction.CallbackContext obj) {
+
+        if (OnNGear != null)
+            OnNGear(false);
+
+    }
+
+    private static void GearShiftDown_performed(InputAction.CallbackContext obj) {
+
+        if (OnGearShiftDown != null)
+            OnGearShiftDown();
+
+    }
+
+    private static void GearShiftUp_performed(InputAction.CallbackContext obj) {
+
+        if (OnGearShiftUp != null)
+            OnGearShiftUp();
+
+    }
+
+    private static void IndicatorHazard_performed(InputAction.CallbackContext obj) {
+
+        if (OnIndicatorHazard != null)
+            OnIndicatorHazard();
+
+    }
+
+    private static void IndicatorRight_performed(InputAction.CallbackContext obj) {
+
+        if (OnIndicatorRight != null)
+            OnIndicatorRight();
+
+    }
+
+    private static void IndicatorLeft_performed(InputAction.CallbackContext obj) {
+
+        if (OnIndicatorLeft != null)
+            OnIndicatorLeft();
+
+    }
+
+    private static void ChangeCamera_performed(InputAction.CallbackContext obj) {
+
+        if (OnChangeCamera != null)
+            OnChangeCamera();
+
+    }
+
+    private static void HighBeamLights_performed(InputAction.CallbackContext obj) {
+
+        if (OnHighBeamHeadlights != null)
+            OnHighBeamHeadlights();
+
+    }
+
+    private static void LowBeamLights_performed(InputAction.CallbackContext obj) {
+
+        if (OnLowBeamHeadlights != null)
+            OnLowBeamHeadlights();
+
+    }
 
 }

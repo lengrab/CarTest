@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -14,82 +14,82 @@ using UnityEngine;
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Misc/RCC Police Siren")]
 public class RCC_PoliceSiren : MonoBehaviour {
 
-	private RCC_AICarController AI;
+    private RCC_AICarController AI;
 
-	public SirenMode sirenMode;
-	public enum SirenMode{Off, On}
+    public SirenMode sirenMode;
+    public enum SirenMode { Off, On }
 
-	public Light[] redLights;
-	public Light[] blueLights;
+    public Light[] redLights;
+    public Light[] blueLights;
 
-	void Start () {
+    void Start() {
 
-		AI = GetComponentInParent<RCC_AICarController> ();
-		
-	}
+        AI = GetComponentInParent<RCC_AICarController>();
 
-	void Update () {
+    }
 
-		switch (sirenMode) {
+    void Update() {
 
-		case SirenMode.Off:
+        switch (sirenMode) {
 
-			for (int i = 0; i < redLights.Length; i++)
-				redLights[i].intensity = Mathf.Lerp (redLights[i].intensity, 0f, Time.deltaTime * 50f);
+            case SirenMode.Off:
 
-			for (int i = 0; i < blueLights.Length; i++)
-				blueLights[i].intensity = Mathf.Lerp (blueLights[i].intensity, 0f, Time.deltaTime * 50f);
+                for (int i = 0; i < redLights.Length; i++)
+                    redLights[i].intensity = Mathf.Lerp(redLights[i].intensity, 0f, Time.deltaTime * 50f);
 
-			break;
+                for (int i = 0; i < blueLights.Length; i++)
+                    blueLights[i].intensity = Mathf.Lerp(blueLights[i].intensity, 0f, Time.deltaTime * 50f);
 
-		case SirenMode.On:
+                break;
 
-			if(Mathf.Approximately((int)(Time.time)%2, 0) && Mathf.Approximately((int)(Time.time * 20)%3, 0)){
+            case SirenMode.On:
 
-				for (int i = 0; i < redLights.Length; i++)
-					redLights[i].intensity = Mathf.Lerp (redLights[i].intensity, 1f, Time.deltaTime * 50f);
-				
-			}else{
+                if (Mathf.Approximately((int)(Time.time) % 2, 0) && Mathf.Approximately((int)(Time.time * 20) % 3, 0)) {
 
-				for (int i = 0; i < redLights.Length; i++)
-					redLights[i].intensity = Mathf.Lerp (redLights[i].intensity, 0f, Time.deltaTime * 10f);
+                    for (int i = 0; i < redLights.Length; i++)
+                        redLights[i].intensity = Mathf.Lerp(redLights[i].intensity, 1f, Time.deltaTime * 50f);
 
-				if(Mathf.Approximately((int)(Time.time * 20)%3, 0)){
-					
-					for (int i = 0; i < blueLights.Length; i++)
-						blueLights[i].intensity = Mathf.Lerp (blueLights[i].intensity, 1f, Time.deltaTime * 50f);
-					
-				}else{
-					
-					for (int i = 0; i < blueLights.Length; i++)
-						blueLights[i].intensity = Mathf.Lerp (blueLights[i].intensity, 0f, Time.deltaTime * 10f);
-					
-				}
+                } else {
 
-			}
+                    for (int i = 0; i < redLights.Length; i++)
+                        redLights[i].intensity = Mathf.Lerp(redLights[i].intensity, 0f, Time.deltaTime * 10f);
 
-			break;
+                    if (Mathf.Approximately((int)(Time.time * 20) % 3, 0)) {
 
-		}
+                        for (int i = 0; i < blueLights.Length; i++)
+                            blueLights[i].intensity = Mathf.Lerp(blueLights[i].intensity, 1f, Time.deltaTime * 50f);
 
-		if (AI) {
+                    } else {
 
-			if (AI.targetChase != null)
-				sirenMode = SirenMode.On;
-			else
-				sirenMode = SirenMode.Off;
+                        for (int i = 0; i < blueLights.Length; i++)
+                            blueLights[i].intensity = Mathf.Lerp(blueLights[i].intensity, 0f, Time.deltaTime * 10f);
 
-		}
-		
-	}
+                    }
 
-	public void SetSiren(bool state){
+                }
 
-		if (state)
-			sirenMode = SirenMode.On;
-		else
-			sirenMode = SirenMode.Off;
+                break;
 
-	}
+        }
+
+        if (AI) {
+
+            if (AI.targetChase != null)
+                sirenMode = SirenMode.On;
+            else
+                sirenMode = SirenMode.Off;
+
+        }
+
+    }
+
+    public void SetSiren(bool state) {
+
+        if (state)
+            sirenMode = SirenMode.On;
+        else
+            sirenMode = SirenMode.Off;
+
+    }
 
 }
