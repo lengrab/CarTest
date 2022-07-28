@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -16,22 +16,22 @@ using System.Collections;
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Camera/RCC Wheel Camera")]
 public class RCC_WheelCamera : MonoBehaviour {
 
-	public void FixShake(){
+    public void FixShake() {
 
-		StartCoroutine (FixShakeDelayed());
+        StartCoroutine(FixShakeDelayed());
 
-	}
+    }
 
-	IEnumerator FixShakeDelayed(){
+    IEnumerator FixShakeDelayed() {
 
-		if (!GetComponent<Rigidbody> ())
-			yield break;
+        if (!GetComponent<Rigidbody>())
+            yield break;
 
-		yield return new WaitForFixedUpdate ();
-		GetComponent<Rigidbody> ().interpolation = RigidbodyInterpolation.None;
-		yield return new WaitForFixedUpdate ();
-		GetComponent<Rigidbody> ().interpolation = RigidbodyInterpolation.Interpolate;
+        yield return new WaitForFixedUpdate();
+        GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.None;
+        yield return new WaitForFixedUpdate();
+        GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
 
-	}
+    }
 
 }

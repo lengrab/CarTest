@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -12,177 +12,225 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Misc/RCC Detachable Part")]
-public class RCC_DetachablePart : MonoBehaviour{
+public class RCC_DetachablePart : MonoBehaviour {
 
-	public Transform COM;		//	Center of mass.
-	private Rigidbody rigid;		//	Rigidbody.
+    private ConfigurableJoint joint;        //	Configurable Joint.
+    private RCC_Joint jointProperties;      //	Joint properties class.
+    private Rigidbody rigid;        //	Rigidbody.
+    public Transform COM;       //	Center of mass.
+    public Collider partCollider;
 
-	public bool lockAtStart = true;		//	Lock all motions of Configurable Joint at start.
-	public float strength = 100f;		//	Strength of the part. 
-	
-	private bool broken = false;			//	Is this part broken?
-	public bool isBreakable = true;		//	Can it break at certain damage?
-	public bool isDetachable = true;	//	Can it detach from the vehicle at certain damage?
+    public enum DetachablePartType { Hood, Trunk, Door, Bumper_F, Bumper_R }
+    public DetachablePartType partType;
 
-	public int loosePoint = 35;		//	Part will be broken at this point.
-	public int detachPoint = 0;     //	Part will be detached at this point.
+    public bool lockAtStart = true;     //	Lock all motions of Configurable Joint at start.
+    public float strength = 100f;       //	Strength of the part. 
+    internal float orgStrength = 100f;       //	Original strength of the part. We will be using this original value while restoring the part.
 
-	public Vector3 addTorqueAfterLoose = Vector3.zero;		//	Adds angular velocity related to speed after the brake point reached.
+    public bool isBreakable = true;     //	Can it break at certain damage?
 
-	[System.Serializable]
-	private class DetachableJoint{
+    private bool broken = false;            //	Is this part broken currently?
 
-		[HideInInspector]
-		public ConfigurableJoint joint;
+    public int loosePoint = 35;     //	Part will be broken at this point.
+    public int detachPoint = 0;     //	Part will be detached at this point.
+    public float deactiveAfterSeconds = 5f; //	Part will be deactivated after the detachment.
 
-		internal ConfigurableJointMotion jointMotionAngularX;
-		internal ConfigurableJointMotion jointMotionAngularY;
-		internal ConfigurableJointMotion jointMotionAngularZ;
+    public Vector3 addTorqueAfterLoose = Vector3.zero;      //	Adds angular velocity related to speed after the brake point reached.
 
-		internal ConfigurableJointMotion jointMotionX;
-		internal ConfigurableJointMotion jointMotionY;
-		internal ConfigurableJointMotion jointMotionZ;
+    public bool dontAffectVehiclePhysics = true;        //	If it's enabled, mass and inertia tensor of the part won't affect to the vehicle physics.
 
-	}
+    void Start() {
 
-	private DetachableJoint detachableJoint = new DetachableJoint();
+        joint = gameObject.GetComponent<ConfigurableJoint>();     //	Getting Configurable Joint of the part.
+        rigid = GetComponent<Rigidbody>();     //	Getting Rigidbody of the part.
+        orgStrength = strength;     //	Getting original strength of the part. We will be using this original value while restoring the part.
 
-	void Start(){
+        if (!partCollider)
+            partCollider = GetComponentInChildren<Collider>();
 
-		rigid = GetComponent<Rigidbody> ();     //	Getting Rigidbody of the part.
-		ConfigurableJoint joint = gameObject.GetComponent<ConfigurableJoint>();		//	Getting Configurable Joint of the part.
+        rigid.interpolation = RigidbodyInterpolation.Interpolate;
+        joint.connectedMassScale = dontAffectVehiclePhysics ? 0 : 1;
 
-		//	Setting center of mass if selected.
-		if (COM)
-			rigid.centerOfMass = transform.InverseTransformPoint(COM.transform.position);
+        //	Setting center of mass if selected.
+        if (COM)
+            rigid.centerOfMass = transform.InverseTransformPoint(COM.transform.position);
 
-		//	If configurable joint found, set it. Otherwise disable the script.
-		if (joint){
+        //	Disable the script if configurable joint not found.
+        if (!joint) {
 
-			detachableJoint.joint = joint;
+            Debug.LogWarning("Configurable Joint not found for " + gameObject.name + "!");
+            enabled = false;
+            return;
 
-		}else{
+        }
 
-			Debug.LogWarning ("Configurable Joint not found for " + gameObject.name + "!");
-			enabled = false;
-			return;
+        //	Getting original properties of the joint. We will be using the original data for restoring the part while repairing.
+        GetJointProperties();
 
-		}
+        //	Locks all motions of Configurable Joint at start.
+        if (lockAtStart)
+            StartCoroutine(LockJoint());
 
-		//	Locks all motions of Configurable Joint at start.
-		if (lockAtStart)
-			StartCoroutine(LockParts ());
+    }
 
-	}
+    /// <summary>
+    /// Getting original properties of the joint. We will be using the original data for restoring the part while repairing.
+    /// </summary>
+    private void GetJointProperties() {
 
-	/// <summary>
-	/// Locks the parts.
-	/// </summary>
-	private IEnumerator LockParts(){
+        jointProperties = new RCC_Joint();
+        jointProperties.GetProperties(joint);
 
-		yield return new WaitForFixedUpdate ();
+    }
 
-		//	Getting default settings of the part.
-		detachableJoint.jointMotionAngularX = detachableJoint.joint.angularXMotion;
-		detachableJoint.jointMotionAngularY = detachableJoint.joint.angularYMotion;
-		detachableJoint.jointMotionAngularZ = detachableJoint.joint.angularZMotion;
+    /// <summary>
+    /// Locks the parts.
+    /// </summary>
+    private IEnumerator LockJoint() {
 
-		detachableJoint.jointMotionX = detachableJoint.joint.xMotion;
-		detachableJoint.jointMotionY = detachableJoint.joint.yMotion;
-		detachableJoint.jointMotionZ = detachableJoint.joint.zMotion;
+        yield return new WaitForFixedUpdate();
+        RCC_Joint.LockPart(joint);
 
-		//	Locking the part.
-		detachableJoint.joint.angularXMotion = ConfigurableJointMotion.Locked;
-		detachableJoint.joint.angularYMotion = ConfigurableJointMotion.Locked;
-		detachableJoint.joint.angularZMotion = ConfigurableJointMotion.Locked;
+    }
 
-		detachableJoint.joint.xMotion = ConfigurableJointMotion.Locked;
-		detachableJoint.joint.yMotion = ConfigurableJointMotion.Locked;
-		detachableJoint.joint.zMotion = ConfigurableJointMotion.Locked;
+    void Update() {
 
-	}
+        // If part is broken, return.
+        if (broken)
+            return;
 
-	void Update(){
+        //	If part is weak and loosen, apply angular velocity related to vehicle speed.
+        if (addTorqueAfterLoose != Vector3.zero && strength <= loosePoint) {
 
-		// If part is broken, return.
-		if (broken)
-			return;
+            float speed = transform.InverseTransformDirection(rigid.velocity).z;        //	Local speed.
+            rigid.AddRelativeTorque(new Vector3(addTorqueAfterLoose.x * speed, addTorqueAfterLoose.y * speed, addTorqueAfterLoose.z * speed));      //	Applying local torque.
 
-		//	If part is weak and loosen, apply angular velocity related to speed.
-		if (addTorqueAfterLoose != Vector3.zero && strength <= loosePoint) {
+        }
 
-			float speed = transform.InverseTransformDirection (rigid.velocity).z;
-			rigid.AddRelativeTorque (new Vector3(addTorqueAfterLoose.x * speed, addTorqueAfterLoose.y * speed, addTorqueAfterLoose.z * speed));
+    }
 
-		}
+    public void OnCollision(float impulse) {
 
-	}
+        // If part is broken, return.
+        if (broken)
+            return;
 
-	public void OnCollision (Collision collision){
+        //	Decreasing strength of the part related to collision impulse.
+        strength -= impulse * 5f;
+        strength = Mathf.Clamp(strength, 0f, Mathf.Infinity);
 
-		// If part is broken, return.
-		if (broken)
-			return;
+        //	Check joint of the part based on strength.
+        CheckJoint();
 
-		Vector3 colRelVel = collision.relativeVelocity;
-		colRelVel *= 1f - Mathf.Abs (Vector3.Dot (transform.up, collision.contacts [0].normal));
+    }
 
-		float cos = Mathf.Abs (Vector3.Dot (collision.contacts [0].normal, colRelVel.normalized));
+    /// <summary>
+    /// Checks joint of the part based on strength.
+    /// </summary>
+    private void CheckJoint() {
 
-		foreach (ContactPoint contact in collision.contacts){
+        // If part is broken, return.
+        if (broken)
+            return;
 
-			Vector3 point = transform.InverseTransformPoint(contact.point);
+        // If strength is 0, unlock the parts and set their joint limits to none. Detach them from the vehicle. If strength is below detach point, only set joint limits to none.
+        if (isBreakable && strength <= detachPoint) {
 
-			if (point.magnitude < 2f) {
+            if (joint) {
 
-				strength -= (2f - (point.magnitude)) * cos * 10f;
-				strength = Mathf.Clamp (strength, 0f, Mathf.Infinity);
+                broken = true;
+                Destroy(joint);
+                transform.SetParent(null);
+                StartCoroutine(DisablePart(deactiveAfterSeconds));
 
-			}
+            }
 
-		}
+        } else if (strength <= loosePoint) {
 
-		DamageParts ();		//	Damage parts.
-		
-	}
+            if (joint) {
 
-	/// <summary>
-	/// Damages the parts.
-	/// </summary>
-	private void DamageParts(){
+                joint.angularXMotion = jointProperties.jointMotionAngularX;
+                joint.angularYMotion = jointProperties.jointMotionAngularY;
+                joint.angularZMotion = jointProperties.jointMotionAngularZ;
 
-		// If part is broken, return.
-		if (broken)
-			return;
+                joint.xMotion = jointProperties.jointMotionX;
+                joint.yMotion = jointProperties.jointMotionY;
+                joint.zMotion = jointProperties.jointMotionZ;
 
-		// Unlocking the parts and set their joint configuration to default.
-		if (strength <= detachPoint) {
+            }
 
-			if (detachableJoint.joint) {
+        }
 
-				broken = true;
-				Destroy (detachableJoint.joint);
-				transform.SetParent (null);
-				Destroy(gameObject, 3f);
+    }
 
-			}
+    /// <summary>
+    /// Repairs, and restores the part.
+    /// </summary>
+    public void OnRepair() {
 
-		}else	if (strength <= loosePoint) {
+        // Enabling gameobject first if it's disabled.
+        if (!gameObject.activeSelf)
+            gameObject.SetActive(true);
 
-			if (detachableJoint.joint) {
+        //	If joint is removed and part is detached, adding new configurable joint component. Configurable Joints cannot be toggled on or off. Therefore, we need to destroy and create configurable joints.
+        if (joint == null) {
 
-				detachableJoint.joint.angularXMotion = detachableJoint.jointMotionAngularX;
-				detachableJoint.joint.angularYMotion = detachableJoint.jointMotionAngularY;
-				detachableJoint.joint.angularZMotion = detachableJoint.jointMotionAngularZ;
+            // Setting properties of the configurable joint to original properties.
+            joint = gameObject.AddComponent<ConfigurableJoint>();
+            jointProperties.SetProperties(joint);
 
-				detachableJoint.joint.xMotion = detachableJoint.jointMotionX;
-				detachableJoint.joint.yMotion = detachableJoint.jointMotionY;
-				detachableJoint.joint.zMotion = detachableJoint.jointMotionZ;
+        } else {
 
-			}
+            // Setting strength to original strength value. And make sure part is not broken anymore.
+            strength = orgStrength;
+            broken = false;
 
-		}
+            //	Locking the part.
+            joint.angularXMotion = ConfigurableJointMotion.Locked;
+            joint.angularYMotion = ConfigurableJointMotion.Locked;
+            joint.angularZMotion = ConfigurableJointMotion.Locked;
 
-	}
+            joint.xMotion = ConfigurableJointMotion.Locked;
+            joint.yMotion = ConfigurableJointMotion.Locked;
+            joint.zMotion = ConfigurableJointMotion.Locked;
+
+        }
+
+    }
+
+    /// <summary>
+    /// Disables the part with delay.
+    /// </summary>
+    /// <param name="delay"></param>
+    /// <returns></returns>
+    private IEnumerator DisablePart(float delay) {
+
+        yield return new WaitForSeconds(delay);
+        gameObject.SetActive(false);
+
+    }
+
+    private void Reset() {
+
+        if (!COM) {
+
+            COM = new GameObject("COM").transform;
+            COM.SetParent(transform);
+            COM.localPosition = Vector3.zero;
+            COM.localRotation = Quaternion.identity;
+
+        }
+
+        ConfigurableJoint cJoint = GetComponent<ConfigurableJoint>();
+
+        if (!cJoint)
+            cJoint = gameObject.AddComponent<ConfigurableJoint>();
+
+        cJoint.connectedBody = GetComponentInParent<RCC_CarControllerV3>().gameObject.GetComponent<Rigidbody>();
+
+        if (!partCollider)
+            partCollider = GetComponentInChildren<Collider>();
+
+    }
 
 }

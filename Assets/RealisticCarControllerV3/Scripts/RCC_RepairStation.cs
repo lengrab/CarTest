@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -14,27 +14,31 @@ using UnityEngine;
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Misc/RCC Repair Station")]
 public class RCC_RepairStation : MonoBehaviour {
 
-	private RCC_CarControllerV3 targetVehicle;
+    private RCC_CarControllerV3 targetVehicle;
 
-	void OnTriggerStay (Collider col) {
+    void OnTriggerEnter(Collider col) {
 
-		if (targetVehicle == null) {
+        if (targetVehicle == null) {
 
-			if (col.gameObject.GetComponentInParent<RCC_CarControllerV3> ())
-				targetVehicle = col.gameObject.GetComponentInParent<RCC_CarControllerV3> ();
+            if (col.gameObject.GetComponentInParent<RCC_CarControllerV3>())
+                targetVehicle = col.gameObject.GetComponentInParent<RCC_CarControllerV3>();
 
-		}
+        }
 
-		if (targetVehicle)
-			targetVehicle.repairNow = true;
+        if (targetVehicle)
+            targetVehicle.Repair();
 
-	}
+    }
 
-	void OnTriggerExit (Collider col) {
+    void OnTriggerExit(Collider col) {
 
-		if (col.gameObject.GetComponentInParent<RCC_CarControllerV3> ())
-			targetVehicle = null;
+        if (col.gameObject.GetComponentInParent<RCC_CarControllerV3>()) {
 
-	}
+            col.gameObject.GetComponentInParent<RCC_CarControllerV3>().Repair();
+            targetVehicle = null;
+
+        }
+
+    }
 
 }

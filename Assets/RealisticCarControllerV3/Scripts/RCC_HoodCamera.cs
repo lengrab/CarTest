@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -18,48 +18,75 @@ public class RCC_HoodCamera : MonoBehaviour {
 
     private void Awake() {
 
-		CheckConnecter();
+        CheckConnecter();
 
-	}
+    }
 
-    public void FixShake(){
+    public void FixShake() {
 
-		StartCoroutine (FixShakeDelayed());
-		
-	}
+        StartCoroutine(FixShakeDelayed());
 
-	IEnumerator FixShakeDelayed(){
+    }
 
-		if (!GetComponent<Rigidbody> ())
-			yield break;
+    IEnumerator FixShakeDelayed() {
 
-		yield return new WaitForFixedUpdate ();
-		GetComponent<Rigidbody> ().interpolation = RigidbodyInterpolation.None;
-		yield return new WaitForFixedUpdate ();
-		GetComponent<Rigidbody> ().interpolation = RigidbodyInterpolation.Interpolate;
+        if (!GetComponent<Rigidbody>())
+            yield break;
 
-	}
+        yield return new WaitForFixedUpdate();
+        GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.None;
+        yield return new WaitForFixedUpdate();
+        GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
 
-	private void CheckConnecter() {
+    }
 
-		ConfigurableJoint joint = GetComponent<ConfigurableJoint>();
+    private void CheckConnecter() {
 
-		if (!joint)
-			return;
+        ConfigurableJoint joint = GetComponent<ConfigurableJoint>();
 
-		if (joint.connectedBody == null) {
+        if (!joint)
+            return;
 
-			Debug.LogError("Hood camera of the " + transform.root.name + " has configurable joint with no connected body! Disabling rigid and joint of the camera.");
-			Destroy(joint);
+        if (joint.connectedBody == null) {
 
-			Rigidbody rigid = GetComponent<Rigidbody>();
+            RCC_CarControllerV3 carController = GetComponentInParent<RCC_CarControllerV3>();
 
-			if(rigid)
-				Destroy(rigid);
+            if (carController) {
 
-		}
+                joint.connectedBody = carController.GetComponent<Rigidbody>();
 
-	}
+            } else {
+
+                Debug.LogError("Hood camera of the " + transform.root.name + " has configurable joint with no connected body! Disabling rigid and joint of the camera.");
+                Destroy(joint);
+
+                Rigidbody rigid = GetComponent<Rigidbody>();
+
+                if (rigid)
+                    Destroy(rigid);
+
+            }
+
+        }
+
+    }
+
+    private void Reset() {
+
+        ConfigurableJoint joint = GetComponent<ConfigurableJoint>();
+
+        if (!joint)
+            return;
+
+        RCC_CarControllerV3 carController = GetComponentInParent<RCC_CarControllerV3>();
+
+        if (!carController)
+            return;
+
+        joint.connectedBody = carController.GetComponent<Rigidbody>();
+        joint.connectedMassScale = 0f;
+
+    }
 
 }
 

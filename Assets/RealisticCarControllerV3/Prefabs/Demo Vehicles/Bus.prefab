@@ -1,131 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &307523197
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 307523198}
-  - component: {fileID: 307523199}
-  m_Layer: 8
-  m_Name: LightTrailer
-  m_TagString: Untagged
-  m_Icon: {fileID: -4453645107408684167, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &307523198
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307523197}
-  m_LocalRotation: {x: 0, y: 0.00000007549789, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000017881511, y: 0.00000011920929, z: 0.000014305108}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6504671807367706445}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!96 &307523199
-TrailRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 307523197}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f5003244d3452fa46ab0ec9370a6ec31, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Time: 0.03
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.08936119
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0}
-      key1: {r: 0, g: 0, b: 0, a: 0.78431374}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 4915
-      atime2: 65535
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 3
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
-  m_Emitting: 0
 --- !u!1 &911356423
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +55,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -192,6 +67,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -321,7 +197,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1367,7 +1243,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 0.078431375}
         key1: {r: 1, g: 1, b: 1, a: 0.39215687}
-        key2: {r: 0, g: 0, b: 0, a: 0.078431375}
+        key2: {r: 0, g: 0, b: 0, a: 0.039215688}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -4758,11 +4634,11 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: da685c9676ead6248ab3ac0019efb88e, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4770,6 +4646,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -4824,11 +4701,11 @@ MonoBehaviour:
   boostFlameColor: {r: 0, g: 1, b: 1, a: 1}
   previewFlames: 0
   minEmission: 5
-  maxEmission: 50
-  minSize: 2.5
-  maxSize: 5
-  minSpeed: 0.5
-  maxSpeed: 5
+  maxEmission: 20
+  minSize: 1
+  maxSize: 4
+  minSpeed: 0.1
+  maxSpeed: 1
 --- !u!1 &1062510398
 GameObject:
   m_ObjectHideFlags: 0
@@ -9423,11 +9300,11 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d96b3301b035b0b4da53b0754702d33e, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9435,6 +9312,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -9478,8 +9356,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1213152726}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.6000001, b: 0, a: 1}
   m_Intensity: 0
   m_Range: 2
@@ -9544,7 +9423,7 @@ LensFlare:
   m_FadeSpeed: 50
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 6
   m_Directional: 0
 --- !u!1 &356040846885450581
 GameObject:
@@ -9601,6 +9480,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9614,6 +9494,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -9636,9 +9517,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 3222994285840652803, guid: 2fe349e72971e2e419ea44ce99daea23, type: 3}
 --- !u!1 &548691327469864999
 GameObject:
@@ -9723,15 +9604,15 @@ ConfigurableJoint:
   m_GameObject: {fileID: 548691327469864999}
   m_ConnectedBody: {fileID: 8411803592918867724}
   m_Anchor: {x: 0, y: 0, z: 3.02}
-  m_Axis: {x: 0, y: 0, z: 1}
+  m_Axis: {x: 0, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.015014173, y: 0.73999786, z: -4.194428}
   serializedVersion: 2
-  m_SecondaryAxis: {x: 0, y: 1, z: 0}
+  m_SecondaryAxis: {x: 0, y: 0, z: 0}
   m_XMotion: 0
   m_YMotion: 0
   m_ZMotion: 0
-  m_AngularXMotion: 0
+  m_AngularXMotion: 1
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
@@ -9745,11 +9626,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: 0
+    limit: -2.5
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 0
+    limit: 2.5
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -9760,7 +9641,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_AngularZLimit:
-    limit: 7.5
+    limit: 3
     bounciness: 0
     contactDistance: 0
   m_TargetPosition: {x: 0, y: 0, z: 0}
@@ -9785,13 +9666,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 0
-    positionDamper: 0
+    positionSpring: 1000000
+    positionDamper: 5000
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 5000
-    positionDamper: 1000
+    positionSpring: 50000
+    positionDamper: 1500
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -9943,6 +9824,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9956,6 +9838,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -9978,9 +9861,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 6677335770260505747, guid: 70478561959d53843a96e10c7ddfd908, type: 3}
 --- !u!1 &942872410727996910
 GameObject:
@@ -10036,6 +9919,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10047,6 +9931,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -10114,6 +9999,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10128,6 +10014,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -10195,6 +10082,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10208,6 +10096,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -10230,9 +10119,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4646473778806841512, guid: 2fe349e72971e2e419ea44ce99daea23, type: 3}
 --- !u!1 &1287725663314380546
 GameObject:
@@ -10289,6 +10178,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10300,6 +10190,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -10323,7 +10214,7 @@ GameObject:
   - component: {fileID: 1415999723432689435}
   - component: {fileID: 1415999723432689436}
   - component: {fileID: 1415999723432689437}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Wheel_RL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10369,9 +10260,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.25
-    m_ExtremumValue: 1
+    m_ExtremumValue: 1.05
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.8
+    m_AsymptoteValue: 0.85
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!114 &1415999723432689437
@@ -10387,25 +10278,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 1415999725362956129}
-  isGrounded: 0
-  canPower: 0
+  alignWheel: 1
+  drawSkid: 1
+  wheelPosition: {x: 0, y: 0, z: 0}
+  wheelRotation: {x: 0, y: 0, z: 0, w: 1}
+  canPower: 1
   powerMultiplier: 1
   canSteer: 0
   steeringMultiplier: 1
   canBrake: 1
   brakingMultiplier: 1
-  canHandbrake: 0
+  canHandbrake: 1
   handbrakeMultiplier: 1
-  width: 0.275
-  offset: 0.05
+  wheelWidth: 0.275
+  wheelOffset: 0
   camber: 0
   caster: 0
   toe: 0
   wheelSlipAmountForward: 0
   wheelSlipAmountSideways: 0
   totalSlip: 0
+  allWheelParticles: []
+  tractionHelpedSidewaysStiffness: 1
   bumpForce: 0
   oldForce: 0
+  RotationValue: 0
+  deflated: 0
+  deflateRadiusMultiplier: 0.8
+  deflatedStiffnessMultiplier: 0.5
 --- !u!1 &1415999723693601360
 GameObject:
   m_ObjectHideFlags: 0
@@ -10417,7 +10317,7 @@ GameObject:
   - component: {fileID: 1415999723693601361}
   - component: {fileID: 1415999723693601362}
   - component: {fileID: 1415999723693601363}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Wheel_FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10481,25 +10381,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 1415999725410264769}
-  isGrounded: 0
+  alignWheel: 1
+  drawSkid: 1
+  wheelPosition: {x: 0, y: 0, z: 0}
+  wheelRotation: {x: 0, y: 0, z: 0, w: 1}
   canPower: 0
   powerMultiplier: 1
-  canSteer: 0
+  canSteer: 1
   steeringMultiplier: 1
   canBrake: 1
   brakingMultiplier: 1
   canHandbrake: 0
   handbrakeMultiplier: 1
-  width: 0.275
-  offset: 0.05
+  wheelWidth: 0.275
+  wheelOffset: 0
   camber: 0
   caster: 0
   toe: 0
   wheelSlipAmountForward: 0
   wheelSlipAmountSideways: 0
   totalSlip: 0
+  allWheelParticles: []
+  tractionHelpedSidewaysStiffness: 1
   bumpForce: 0
   oldForce: 0
+  RotationValue: 0
+  deflated: 0
+  deflateRadiusMultiplier: 0.8
+  deflatedStiffnessMultiplier: 0.5
 --- !u!1 &1415999723868236825
 GameObject:
   m_ObjectHideFlags: 0
@@ -10524,7 +10433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415999723868236825}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.08, z: -0.566}
+  m_LocalPosition: {x: 0, y: -1.08, z: -0.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3586569555515488820}
@@ -10618,9 +10527,9 @@ WheelCollider:
     m_Stiffness: 1.5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.3
-    m_ExtremumValue: 1
+    m_ExtremumValue: 1.05
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.8
+    m_AsymptoteValue: 0.85
     m_Stiffness: 1.5
   m_Enabled: 1
 --- !u!1 &1415999724327378241
@@ -10678,6 +10587,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10689,6 +10599,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -10756,6 +10667,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10767,6 +10679,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -10790,7 +10703,7 @@ GameObject:
   - component: {fileID: 1415999724527505881}
   - component: {fileID: 1415999724527505882}
   - component: {fileID: 1415999724527505883}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Wheel_FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10854,25 +10767,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 1415999724327378242}
-  isGrounded: 0
+  alignWheel: 1
+  drawSkid: 1
+  wheelPosition: {x: 0, y: 0, z: 0}
+  wheelRotation: {x: 0, y: 0, z: 0, w: 1}
   canPower: 0
   powerMultiplier: 1
-  canSteer: 0
+  canSteer: 1
   steeringMultiplier: 1
   canBrake: 1
   brakingMultiplier: 1
   canHandbrake: 0
   handbrakeMultiplier: 1
-  width: 0.275
-  offset: 0.05
+  wheelWidth: 0.275
+  wheelOffset: 0
   camber: 0
   caster: 0
   toe: 0
   wheelSlipAmountForward: 0
   wheelSlipAmountSideways: 0
   totalSlip: 0
+  allWheelParticles: []
+  tractionHelpedSidewaysStiffness: 1
   bumpForce: 0
   oldForce: 0
+  RotationValue: 0
+  deflated: 0
+  deflateRadiusMultiplier: 0.8
+  deflatedStiffnessMultiplier: 0.5
 --- !u!1 &1415999724544883241
 GameObject:
   m_ObjectHideFlags: 0
@@ -10966,6 +10888,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -10977,6 +10900,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -11000,7 +10924,7 @@ GameObject:
   - component: {fileID: 1415999725023738028}
   - component: {fileID: 1415999725023738027}
   - component: {fileID: 1415999725023738026}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Wheel_RR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11046,9 +10970,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.25
-    m_ExtremumValue: 1
+    m_ExtremumValue: 1.05
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.8
+    m_AsymptoteValue: 0.85
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!114 &1415999725023738026
@@ -11064,25 +10988,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 1415999724811577752}
-  isGrounded: 0
-  canPower: 0
+  alignWheel: 1
+  drawSkid: 1
+  wheelPosition: {x: 0, y: 0, z: 0}
+  wheelRotation: {x: 0, y: 0, z: 0, w: 1}
+  canPower: 1
   powerMultiplier: 1
   canSteer: 0
   steeringMultiplier: 1
   canBrake: 1
   brakingMultiplier: 1
-  canHandbrake: 0
+  canHandbrake: 1
   handbrakeMultiplier: 1
-  width: 0.275
-  offset: 0.05
+  wheelWidth: 0.275
+  wheelOffset: 0
   camber: 0
   caster: 0
   toe: 0
   wheelSlipAmountForward: 0
   wheelSlipAmountSideways: 0
   totalSlip: 0
+  allWheelParticles: []
+  tractionHelpedSidewaysStiffness: 1
   bumpForce: 0
   oldForce: 0
+  RotationValue: 0
+  deflated: 0
+  deflateRadiusMultiplier: 0.8
+  deflatedStiffnessMultiplier: 0.5
 --- !u!1 &1415999725362956128
 GameObject:
   m_ObjectHideFlags: 0
@@ -11138,6 +11071,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11149,6 +11083,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -11216,6 +11151,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11227,6 +11163,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -11294,6 +11231,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11305,6 +11243,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -11373,9 +11312,9 @@ WheelCollider:
     m_Stiffness: 1.5
   m_SidewaysFriction:
     m_ExtremumSlip: 0.3
-    m_ExtremumValue: 1
+    m_ExtremumValue: 1.05
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.8
+    m_AsymptoteValue: 0.85
     m_Stiffness: 1.5
   m_Enabled: 1
 --- !u!1 &1415999725457826414
@@ -11419,8 +11358,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415999725457826414}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.5, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -11483,12 +11423,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 4
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &1415999725457826415
 LensFlare:
   m_ObjectHideFlags: 0
@@ -11503,7 +11449,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &1501043494725859519
 GameObject:
@@ -11560,6 +11506,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11571,6 +11518,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -11639,6 +11587,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11652,6 +11601,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -11674,9 +11624,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 2959467708922500008, guid: 70478561959d53843a96e10c7ddfd908, type: 3}
 --- !u!1 &2492525084300746318
 GameObject:
@@ -11732,6 +11682,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11743,6 +11694,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -11809,6 +11761,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11820,6 +11773,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -11886,6 +11840,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11897,6 +11852,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -11963,6 +11919,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -11974,6 +11931,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12040,6 +11998,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12051,6 +12010,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12119,6 +12079,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12130,6 +12091,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12152,9 +12114,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -384826617265215163, guid: 70478561959d53843a96e10c7ddfd908, type: 3}
 --- !u!1 &3474147303643835711
 GameObject:
@@ -12211,6 +12173,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12222,6 +12185,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12288,6 +12252,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12299,6 +12264,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12365,6 +12331,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12376,6 +12343,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12442,6 +12410,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12453,6 +12422,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12520,6 +12490,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12531,6 +12502,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12598,6 +12570,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12609,6 +12582,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12676,6 +12650,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12689,6 +12664,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12711,9 +12687,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: -5989622174984758173, guid: 2fe349e72971e2e419ea44ce99daea23, type: 3}
 --- !u!1 &4794123003980436155
 GameObject:
@@ -12770,6 +12746,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12782,6 +12759,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12848,6 +12826,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12861,6 +12840,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12927,6 +12907,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -12938,6 +12919,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12950,132 +12932,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &5324267085564108260
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5324267085564108263}
-  - component: {fileID: 5324267085564108262}
-  m_Layer: 8
-  m_Name: LightTrailer
-  m_TagString: Untagged
-  m_Icon: {fileID: -4453645107408684167, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5324267085564108263
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5324267085564108260}
-  m_LocalRotation: {x: 0, y: 0.00000007549789, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00000077486123, y: 0.00000014901161, z: 0.000013351435}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6504671807816409131}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!96 &5324267085564108262
-TrailRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5324267085564108260}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f5003244d3452fa46ab0ec9370a6ec31, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Time: 0.03
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.08936119
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0}
-      key1: {r: 0, g: 0, b: 0, a: 0.78431374}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 4915
-      atime2: 65535
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 3
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
-  m_Emitting: 0
 --- !u!1 &5324267086353520726
 GameObject:
   m_ObjectHideFlags: 0
@@ -13130,6 +12986,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13141,6 +12998,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -13153,258 +13011,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &5324267087022556772
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5324267087022556775}
-  - component: {fileID: 5324267087022556774}
-  m_Layer: 8
-  m_Name: LightTrailer
-  m_TagString: Untagged
-  m_Icon: {fileID: -4453645107408684167, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5324267087022556775
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5324267087022556772}
-  m_LocalRotation: {x: 0, y: 0.00000007549789, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0000005364403, y: 0.00000011920929, z: 0.000014305108}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6504671807427779655}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!96 &5324267087022556774
-TrailRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5324267087022556772}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f5003244d3452fa46ab0ec9370a6ec31, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Time: 0.03
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.08936119
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0}
-      key1: {r: 0, g: 0, b: 0, a: 0.78431374}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 4915
-      atime2: 65535
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 3
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
-  m_Emitting: 0
---- !u!1 &5324267087090015835
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5324267087090015834}
-  - component: {fileID: 5324267087090015837}
-  m_Layer: 8
-  m_Name: LightTrailer
-  m_TagString: Untagged
-  m_Icon: {fileID: -4453645107408684167, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5324267087090015834
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5324267087090015835}
-  m_LocalRotation: {x: 0, y: 0.00000007549789, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0000013113005, y: 0.00000014901161, z: 0.000013351435}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6504671806720637945}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!96 &5324267087090015837
-TrailRenderer:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5324267087090015835}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: f5003244d3452fa46ab0ec9370a6ec31, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Time: 0.03
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.08936119
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 0}
-      key1: {r: 0, g: 0, b: 0, a: 0.78431374}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 4915
-      atime2: 65535
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 3
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_MinVertexDistance: 0.1
-  m_Autodestruct: 0
-  m_Emitting: 0
 --- !u!1 &5324267087626951198
 GameObject:
   m_ObjectHideFlags: 0
@@ -13491,6 +13097,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13502,6 +13109,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -13569,6 +13177,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13580,6 +13189,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -13647,6 +13257,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13660,6 +13271,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -13682,9 +13294,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 2959467708922500008, guid: 2fe349e72971e2e419ea44ce99daea23, type: 3}
 --- !u!1 &6254488704499569192
 GameObject:
@@ -13742,6 +13354,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13755,6 +13368,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -13777,9 +13391,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 7101718694983757005, guid: 70478561959d53843a96e10c7ddfd908, type: 3}
 --- !u!1 &6281598317055284464
 GameObject:
@@ -13835,6 +13449,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13846,6 +13461,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -13913,6 +13529,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13924,6 +13541,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -13992,6 +13610,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14005,6 +13624,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -14027,9 +13647,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 8154635275824796882, guid: 70478561959d53843a96e10c7ddfd908, type: 3}
 --- !u!1 &6395189028934878849
 GameObject:
@@ -14085,6 +13705,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14096,6 +13717,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -14137,8 +13759,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   m_LocalPosition: {x: -0.701, y: -0.469, z: -10.756}
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
-  m_Children:
-  - {fileID: 5324267087090015834}
+  m_Children: []
   m_Father: {fileID: 1415999724544883242}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14150,8 +13771,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6504671806720637941}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -14214,12 +13836,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 1
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &6504671806720637940
 LensFlare:
   m_ObjectHideFlags: 0
@@ -14234,7 +13862,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &6504671806914279873
 GameObject:
@@ -14291,6 +13919,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14302,6 +13931,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -14369,6 +13999,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14380,6 +14011,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -14433,8 +14065,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6504671807359960865}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.5, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -14497,12 +14130,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 4
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &6504671807359960867
 LensFlare:
   m_ObjectHideFlags: 0
@@ -14517,7 +14156,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &6504671807367706441
 GameObject:
@@ -14548,8 +14187,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   m_LocalPosition: {x: 0.748, y: -0.278, z: -10.739}
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
-  m_Children:
-  - {fileID: 307523198}
+  m_Children: []
   m_Father: {fileID: 1415999724544883242}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14561,8 +14199,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6504671807367706441}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -14625,12 +14264,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 1
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &6504671807367706440
 LensFlare:
   m_ObjectHideFlags: 0
@@ -14645,7 +14290,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &6504671807427779652
 GameObject:
@@ -14676,8 +14321,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   m_LocalPosition: {x: -0.73, y: -0.278, z: -10.739}
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
-  m_Children:
-  - {fileID: 5324267087022556775}
+  m_Children: []
   m_Father: {fileID: 1415999724544883242}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14689,8 +14333,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6504671807427779652}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -14753,12 +14398,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 1
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &6504671807427779654
 LensFlare:
   m_ObjectHideFlags: 0
@@ -14773,7 +14424,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &6504671807479721849
 GameObject:
@@ -14830,6 +14481,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14841,6 +14493,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -14908,6 +14561,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14919,6 +14573,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -14972,8 +14627,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6504671807572241480}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.5, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -15036,12 +14692,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 3
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &6504671807572241483
 LensFlare:
   m_ObjectHideFlags: 0
@@ -15056,7 +14718,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &6504671807816409128
 GameObject:
@@ -15087,8 +14749,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
   m_LocalPosition: {x: 0.726, y: -0.469, z: -10.756}
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
-  m_Children:
-  - {fileID: 5324267085564108263}
+  m_Children: []
   m_Father: {fileID: 1415999724544883242}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15100,8 +14761,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6504671807816409128}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -15164,12 +14826,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 1
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &6504671807816409130
 LensFlare:
   m_ObjectHideFlags: 0
@@ -15184,7 +14852,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &6504671808541037600
 GameObject:
@@ -15227,8 +14895,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6504671808541037600}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.5, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -15291,12 +14960,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 3
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &6504671808541037602
 LensFlare:
   m_ObjectHideFlags: 0
@@ -15311,7 +14986,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &7152859383963102936
 GameObject:
@@ -15368,6 +15043,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15379,6 +15055,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -15447,6 +15124,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15460,6 +15138,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -15482,9 +15161,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 9087994532099527330, guid: 70478561959d53843a96e10c7ddfd908, type: 3}
 --- !u!1 &7879730019908664925
 GameObject:
@@ -15540,6 +15219,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15551,6 +15231,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -15618,6 +15299,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15631,6 +15313,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -15653,9 +15336,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 8551224120383117238, guid: 2fe349e72971e2e419ea44ce99daea23, type: 3}
 --- !u!1 &8081205764998148279
 GameObject:
@@ -15711,6 +15394,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -15722,6 +15406,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -15775,8 +15460,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8411803591743955625}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 0
+  m_Shape: 0
   m_Color: {r: 1, g: 0.9816552, b: 0.73399997, a: 1}
   m_Intensity: 1
   m_Range: 50
@@ -15839,12 +15525,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
   flareBrightness: 1
   lightType: 0
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8411803591743955607
 LensFlare:
   m_ObjectHideFlags: 0
@@ -15859,7 +15551,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8411803591756524413
 GameObject:
@@ -15972,8 +15664,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8411803592323514493}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.5, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -16036,12 +15729,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
   flareBrightness: 1
   lightType: 3
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8411803592323514491
 LensFlare:
   m_ObjectHideFlags: 0
@@ -16056,7 +15755,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8411803592513806483
 GameObject:
@@ -16133,8 +15832,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8411803592526220703}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.5, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -16197,12 +15897,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
   flareBrightness: 1
   lightType: 3
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8411803592526220701
 LensFlare:
   m_ObjectHideFlags: 0
@@ -16217,7 +15923,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8411803592568029724
 GameObject:
@@ -16363,17 +16069,17 @@ ConfigurableJoint:
   m_TargetVelocity: {x: 0, y: 0, z: 0}
   m_XDrive:
     serializedVersion: 3
-    positionSpring: 250
+    positionSpring: 500
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_YDrive:
     serializedVersion: 3
-    positionSpring: 250
+    positionSpring: 500
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_ZDrive:
     serializedVersion: 3
-    positionSpring: 250
+    positionSpring: 500
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -16381,13 +16087,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 100
-    positionDamper: 10
+    positionSpring: 250
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 100
-    positionDamper: 10
+    positionSpring: 250
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -16475,6 +16181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canControl: 1
   isGrounded: 0
+  overrideBehavior: 0
   FrontLeftWheelTransform: {fileID: 1415999725410264769}
   FrontRightWheelTransform: {fileID: 1415999724327378242}
   RearLeftWheelTransform: {fileID: 1415999725362956129}
@@ -16485,10 +16192,10 @@ MonoBehaviour:
   RearLeftWheelCollider: {fileID: 1415999723432689437}
   RearRightWheelCollider: {fileID: 1415999725023738026}
   ExtraRearWheelsCollider: []
-  allWheelColliders: []
-  overrideWheels: 1
+  hasExtraWheels: 0
+  overrideWheels: 0
+  overrideAllWheels: 0
   poweredWheels: 0
-  applyEngineTorqueToExtraRearWheelColliders: 0
   configureVehicleSubsteps:
     speedThreshold: 10
     stepsBelowThreshold: 5
@@ -16498,15 +16205,66 @@ MonoBehaviour:
   steeringWheelAngleMultiplier: -11
   wheelTypeChoise: 1
   externalController: 0
-  rigid: {fileID: 0}
-  COM: {fileID: 8411803592568029723}
-  brakeTorque: 10000
-  steerAngle: 45
+  steeringType: 0
+  steerAngleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 40
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 50
+      value: 20
+      inSlope: -0.35541886
+      outSlope: -0.35541886
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 100
+      value: 11
+      inSlope: -0.10217345
+      outSlope: -0.10217345
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09561304
+      outWeight: 0.28661424
+    - serializedVersion: 3
+      time: 150
+      value: 6
+      inSlope: -0.07598892
+      outSlope: -0.07598892
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 200
+      value: 5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  steerAngle: 40
   highspeedsteerAngle: 3
   highspeedsteerAngleAtspeed: 100
   antiRollFrontHorizontal: 2500
   antiRollRearHorizontal: 2500
   antiRollVertical: 0
+  COM: {fileID: 8411803592568029723}
+  brakeTorque: 10000
   downForce: 10
   speed: 0
   maxspeed: 120
@@ -16514,10 +16272,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.29090908
-      outSlope: 0.29090908
+      time: 1000
+      value: 400
+      inSlope: 0.22857143
+      outSlope: 0.22857143
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -16525,8 +16283,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 2750
       value: 800
-      inSlope: 0.06926406
-      outSlope: 0.06926406
+      inSlope: 0.038095236
+      outSlope: 0.038095236
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -16549,23 +16307,23 @@ MonoBehaviour:
   minEngineRPM: 1000
   maxEngineRPM: 4500
   engineRPM: 0
+  engineRPMRaw: 0
   engineInertia: 0.2
-  engineFriction: 0.15
   useRevLimiter: 0
   useExhaustFlame: 0
   engineRunning: 0
   useSteeringLimiter: 1
   useCounterSteering: 1
-  useSteeringSensitivity: 0
-  counterSteeringFactor: 1
-  steeringSmootherFactor: 15
+  useSteeringSensitivity: 1
+  counterSteeringFactor: 0.5
+  steeringSensitivityFactor: 1
   oldSteeringInput: 0
   steeringDifference: 0
-  useFuelConsumption: 0
+  useFuelConsumption: 1
   fuelTankCapacity: 62
   fuelTank: 62
   fuelConsumptionRate: 0.1
-  useEngineHeat: 0
+  useEngineHeat: 1
   engineHeat: 15
   engineCoolingWaterThreshold: 60
   engineHeatRate: 1
@@ -16601,9 +16359,9 @@ MonoBehaviour:
   finalRatio: 4.21
   gearShiftingDelay: 0.5
   gearShiftingThreshold: 0.8
-  clutchInertia: 0.5
-  gearShiftUpRPM: 3750
-  gearShiftDownRPM: 3000
+  clutchInertia: 0.25
+  gearShiftUpRPM: 3850
+  gearShiftDownRPM: 2850
   changingGear: 0
   direction: 1
   launched: 0
@@ -16635,34 +16393,125 @@ MonoBehaviour:
     handbrakeInput: 0
     boostInput: 0
     gearInput: 0
+    orbitX: 0
+    orbitY: 0
+    scroll: {x: 0, y: 0}
   throttleInput: 0
   brakeInput: 0
   steerInput: 0
+  counterSteerInput: 0
   clutchInput: 0
   handbrakeInput: 0
   boostInput: 0
   fuelInput: 0
   cutGas: 0
+  permanentGas: 0
   lowBeamHeadLightsOn: 0
   highBeamHeadLightsOn: 0
   indicatorsOn: 0
   indicatorTimer: 0
+  damage:
+    automaticInstallation: 0
+    meshDeformation: 1
+    deformationMode: 0
+    damageResolution: 100
+    damageFilter:
+      serializedVersion: 2
+      m_Bits: 7991
+    randomizeVertices: 1
+    damageRadius: 0.5
+    damageMultiplier: 1
+    maximumDamage: 0.5
+    repairNow: 0
+    repaired: 1
+    recalculateNormals: 1
+    recalculateBounds: 1
+    wheelDamage: 1
+    wheelDamageRadius: 1
+    wheelDamageMultiplier: 1
+    wheelDetachment: 1
+    lightDamage: 1
+    lightDamageRadius: 0.5
+    lightDamageMultiplier: 1
+    partDamage: 1
+    meshFilters:
+    - {fileID: 5018463237060005050}
+    - {fileID: 7684944749064919311}
+    - {fileID: 4687535017439536317}
+    - {fileID: 7210643166404900241}
+    - {fileID: 2573537738997838704}
+    - {fileID: 8421955568129451243}
+    - {fileID: 4466764028600866412}
+    - {fileID: 5900033108107605232}
+    - {fileID: 8399069674847221736}
+    - {fileID: 5693257551223771160}
+    - {fileID: 3886284223739966201}
+    - {fileID: 3380475296638392734}
+    - {fileID: 5046291687542093091}
+    - {fileID: 5867478529876515530}
+    - {fileID: 8480450828030811842}
+    - {fileID: 4208402115352325735}
+    - {fileID: 1140602978033380904}
+    - {fileID: 5849738262145973082}
+    - {fileID: 8119567208360174942}
+    - {fileID: 7666102351679808365}
+    - {fileID: 2722032142774299288}
+    - {fileID: 884589048001029283}
+    - {fileID: 989796292515407222}
+    - {fileID: 2744775407435242866}
+    - {fileID: 8395267485293920011}
+    - {fileID: 6964650687209975264}
+    - {fileID: 8938873806712560352}
+    - {fileID: 5328816831018362343}
+    - {fileID: 3804504258855869611}
+    - {fileID: 1155075792548603423}
+    - {fileID: 6062549770869695392}
+    - {fileID: 8947152686544455342}
+    - {fileID: 3073990742445115365}
+    - {fileID: 5759165259486696665}
+    - {fileID: 5900868007759621071}
+    - {fileID: 1067520673868858132}
+    - {fileID: 5806400552017414600}
+    - {fileID: 4768119123403562590}
+    - {fileID: 4960962127552609132}
+    - {fileID: 6984176695396362523}
+    - {fileID: 7792636358301647489}
+    detachableParts: []
+    lights:
+    - {fileID: 8411803593616858594}
+    - {fileID: 8411803591743955606}
+    - {fileID: 8411803592981475554}
+    - {fileID: 8411803593392587291}
+    - {fileID: 8411803592526220700}
+    - {fileID: 8411803592323514490}
+    - {fileID: 6504671807367706443}
+    - {fileID: 6504671807427779657}
+    - {fileID: 6504671806720637943}
+    - {fileID: 6504671807816409133}
+    - {fileID: 1415999725457826400}
+    - {fileID: 6504671807359960866}
+    - {fileID: 6504671807572241482}
+    - {fileID: 6504671808541037605}
+    wheels:
+    - {fileID: 1415999723693601363}
+    - {fileID: 1415999724527505883}
+    - {fileID: 1415999723432689437}
+    - {fileID: 1415999725023738026}
+    damageData:
+      Hood: []
+      Trunk: []
+      Door: []
+      Bumper_F: []
+      Bumper_R: []
+      hoodDamage: 0
+      trunkDamage: 0
+      doorDamage: 0
+      bumper_FDamage: 0
+      bumper_RDamage: 0
   useDamage: 1
-  wheelDamage: 0
-  wheelDamageRadius: 1
-  wheelDamageMultiplier: 0.1
-  deformableMeshFilters: []
-  damageFilter:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  randomizeVertices: 1
-  damageRadius: 0.5
-  repairNow: 0
-  repaired: 1
-  maximumDamage: 0.5
-  damageMultiplier: 1
+  useCollisionParticles: 1
+  useCollisionAudio: 1
   maximumContactSparkle: 5
-  detachableParts: []
   velocityDirection: {fileID: 0}
   steeringDirection: {fileID: 0}
   velocityAngle: 0
@@ -16683,6 +16532,7 @@ MonoBehaviour:
   ABSAct: 0
   TCSAct: 0
   ESPAct: 0
+  ESPBroken: 0
   frontSlip: 0
   rearSlip: 0
   underSteering: 0
@@ -16733,8 +16583,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8411803592981475557}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.5, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -16797,12 +16648,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
   flareBrightness: 1
   lightType: 3
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8411803592981475555
 LensFlare:
   m_ObjectHideFlags: 0
@@ -16817,7 +16674,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8411803593102773951
 GameObject:
@@ -16935,8 +16792,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8411803593392587294}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.5, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -16999,12 +16857,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
   flareBrightness: 1
   lightType: 3
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8411803593392587292
 LensFlare:
   m_ObjectHideFlags: 0
@@ -17019,7 +16883,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8411803593616858597
 GameObject:
@@ -17062,8 +16926,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8411803593616858597}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 0
+  m_Shape: 0
   m_Color: {r: 1, g: 0.9816552, b: 0.73399997, a: 1}
   m_Intensity: 1
   m_Range: 50
@@ -17126,12 +16991,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
   flareBrightness: 1
   lightType: 0
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8411803593616858595
 LensFlare:
   m_ObjectHideFlags: 0
@@ -17146,7 +17017,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8493085889285328996
 GameObject:
@@ -17203,6 +17074,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17214,6 +17086,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -17281,6 +17154,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17292,6 +17166,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -17359,6 +17234,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17370,6 +17246,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -17436,6 +17313,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17447,6 +17325,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -17514,6 +17393,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -17525,6 +17405,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 652899108}
   - component: {fileID: 652899109}
   - component: {fileID: 652899107}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Right Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5177510235477442305}
-  m_LocalRotation: {x: 0.000000057601167, y: -0.000000057601163, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.73156977, y: 0.23754229, z: 0.7187412}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -164,7 +164,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5177510235477442305}
-  m_Mesh: {fileID: 4300012, guid: 3958d6b78bc83e349b0118e85806c3c5, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 24c9df4b23c3bb646a83211ed84c6210, type: 2}
 --- !u!23 &5177510235479630151
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -179,6 +179,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -194,6 +195,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -232,10 +234,10 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300012, guid: 3958d6b78bc83e349b0118e85806c3c5, type: 3}
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 24c9df4b23c3bb646a83211ed84c6210, type: 2}
 --- !u!153 &652899109
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -245,7 +247,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 5177510235477442305}
   m_ConnectedBody: {fileID: 8604693750619759252}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0.7315713, y: 0.2375431, z: 0.71874994}
   serializedVersion: 2
@@ -267,11 +269,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: -50
+    limit: 0
     bounciness: 0.5
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 0
+    limit: 50
     bounciness: 0.5
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -344,13 +346,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   COM: {fileID: 84817221}
+  partCollider: {fileID: 0}
+  partType: 2
   lockAtStart: 1
   strength: 100
   isBreakable: 1
-  isDetachable: 1
   loosePoint: 50
   detachPoint: 0
+  deactiveAfterSeconds: 5
   addTorqueAfterLoose: {x: -1.5, y: 0, z: 0}
+  dontAffectVehiclePhysics: 1
 --- !u!1 &5177510235477442307
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +410,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -416,6 +422,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -443,7 +450,7 @@ GameObject:
   - component: {fileID: 728469552}
   - component: {fileID: 728469553}
   - component: {fileID: 728469555}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Rear Bumper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,6 +493,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -498,6 +506,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -536,9 +545,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300016, guid: 3958d6b78bc83e349b0118e85806c3c5, type: 3}
 --- !u!153 &728469553
 ConfigurableJoint:
@@ -616,7 +625,7 @@ ConfigurableJoint:
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 0
+    positionSpring: 1000
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -648,13 +657,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   COM: {fileID: 0}
+  partCollider: {fileID: 0}
+  partType: 4
   lockAtStart: 1
   strength: 100
   isBreakable: 1
-  isDetachable: 1
   loosePoint: 50
   detachPoint: 0
+  deactiveAfterSeconds: 5
   addTorqueAfterLoose: {x: 0, y: 0, z: 0}
+  dontAffectVehiclePhysics: 1
 --- !u!1 &5177510235477442311
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +721,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -720,6 +733,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -786,6 +800,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -797,6 +812,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -824,7 +840,7 @@ GameObject:
   - component: {fileID: 1841359062}
   - component: {fileID: 1841359063}
   - component: {fileID: 1841359061}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -868,6 +884,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -880,6 +897,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -918,9 +936,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300006, guid: 3958d6b78bc83e349b0118e85806c3c5, type: 3}
 --- !u!153 &1841359063
 ConfigurableJoint:
@@ -1030,13 +1048,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   COM: {fileID: 1531370054}
+  partCollider: {fileID: 0}
+  partType: 1
   lockAtStart: 1
   strength: 100
   isBreakable: 1
-  isDetachable: 1
   loosePoint: 50
   detachPoint: 0
+  deactiveAfterSeconds: 5
   addTorqueAfterLoose: {x: 2, y: 0, z: 0}
+  dontAffectVehiclePhysics: 1
 --- !u!1 &5177510235477442321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,6 +1112,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1102,6 +1124,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1168,6 +1191,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1179,6 +1203,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1245,6 +1270,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1256,6 +1282,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1322,6 +1349,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1333,6 +1361,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1400,6 +1429,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1413,6 +1443,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1435,9 +1466,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300040, guid: 3958d6b78bc83e349b0118e85806c3c5, type: 3}
 --- !u!1 &5177510235477442409
 GameObject:
@@ -1454,7 +1485,7 @@ GameObject:
   - component: {fileID: 491902159}
   - component: {fileID: 491902160}
   - component: {fileID: 491902162}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Front Bumper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1497,6 +1528,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1509,6 +1541,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1547,9 +1580,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300030, guid: 3958d6b78bc83e349b0118e85806c3c5, type: 3}
 --- !u!153 &491902160
 ConfigurableJoint:
@@ -1627,7 +1660,7 @@ ConfigurableJoint:
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 0
+    positionSpring: 1000
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -1659,13 +1692,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   COM: {fileID: 0}
+  partCollider: {fileID: 0}
+  partType: 3
   lockAtStart: 1
   strength: 100
   isBreakable: 1
-  isDetachable: 1
   loosePoint: 50
   detachPoint: 0
+  deactiveAfterSeconds: 5
   addTorqueAfterLoose: {x: 0, y: 0, z: 0}
+  dontAffectVehiclePhysics: 1
 --- !u!1 &5177510235477442411
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,6 +1756,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1731,6 +1768,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1797,6 +1835,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1808,6 +1847,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1874,6 +1914,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1885,6 +1926,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1951,6 +1993,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1962,6 +2005,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2028,6 +2072,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2039,6 +2084,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2105,6 +2151,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2117,6 +2164,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2144,7 +2192,7 @@ GameObject:
   - component: {fileID: 55729970}
   - component: {fileID: 55729971}
   - component: {fileID: 55729969}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Hood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2188,6 +2236,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2200,6 +2249,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2238,9 +2288,9 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 4300024, guid: 3958d6b78bc83e349b0118e85806c3c5, type: 3}
 --- !u!153 &55729971
 ConfigurableJoint:
@@ -2350,13 +2400,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   COM: {fileID: 718586996}
+  partCollider: {fileID: 0}
+  partType: 0
   lockAtStart: 1
   strength: 100
   isBreakable: 1
-  isDetachable: 1
   loosePoint: 50
   detachPoint: 0
+  deactiveAfterSeconds: 5
   addTorqueAfterLoose: {x: -5, y: 0, z: 0}
+  dontAffectVehiclePhysics: 1
 --- !u!1 &5177510235477442425
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,6 +2472,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2430,6 +2484,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2496,6 +2551,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2507,6 +2563,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2586,7 +2643,7 @@ GameObject:
   - component: {fileID: 1485849598}
   - component: {fileID: 1485849599}
   - component: {fileID: 1485849597}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Left Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2600,7 +2657,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5177510235477442431}
-  m_LocalRotation: {x: 0.000000057601167, y: -0.000000057601163, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.7887091, y: 0.23754229, z: 0.7187412}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2615,7 +2672,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5177510235477442431}
-  m_Mesh: {fileID: 4300044, guid: 3958d6b78bc83e349b0118e85806c3c5, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 15aa5867c2385d04381bf7dd1bf39ddd, type: 2}
 --- !u!23 &5177510235479630269
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2630,6 +2687,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2645,6 +2703,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2683,10 +2742,10 @@ MeshCollider:
   m_Material: {fileID: 13400000, guid: 2f0051c0816aede488419a92df674d2d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300044, guid: 3958d6b78bc83e349b0118e85806c3c5, type: 3}
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 15aa5867c2385d04381bf7dd1bf39ddd, type: 2}
 --- !u!153 &1485849599
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -2696,7 +2755,7 @@ ConfigurableJoint:
   m_GameObject: {fileID: 5177510235477442431}
   m_ConnectedBody: {fileID: 8604693750619759252}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_Axis: {x: 1, y: 0, z: 0}
+  m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: -0.7887078, y: 0.2375431, z: 0.7187502}
   serializedVersion: 2
@@ -2718,11 +2777,11 @@ ConfigurableJoint:
     spring: 0
     damper: 0
   m_LowAngularXLimit:
-    limit: 0
+    limit: -50
     bounciness: 0.5
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 50
+    limit: 0
     bounciness: 0.5
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -2795,13 +2854,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   COM: {fileID: 208192074}
+  partCollider: {fileID: 0}
+  partType: 2
   lockAtStart: 1
   strength: 100
   isBreakable: 1
-  isDetachable: 1
   loosePoint: 50
   detachPoint: 0
+  deactiveAfterSeconds: 5
   addTorqueAfterLoose: {x: 1.5, y: 0, z: 0}
+  dontAffectVehiclePhysics: 1
 --- !u!1 &8604693749028060472
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,7 +2981,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3965,7 +4027,7 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 0.078431375}
         key1: {r: 1, g: 1, b: 1, a: 0.39215687}
-        key2: {r: 0, g: 0, b: 0, a: 0.078431375}
+        key2: {r: 0, g: 0, b: 0, a: 0.039215688}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -7356,11 +7418,11 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: da685c9676ead6248ab3ac0019efb88e, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7368,6 +7430,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -7422,11 +7485,11 @@ MonoBehaviour:
   boostFlameColor: {r: 0, g: 1, b: 1, a: 1}
   previewFlames: 0
   minEmission: 5
-  maxEmission: 50
-  minSize: 2.5
-  maxSize: 5
-  minSpeed: 0.5
-  maxSpeed: 5
+  maxEmission: 20
+  minSize: 1
+  maxSize: 4
+  minSpeed: 0.1
+  maxSpeed: 1
 --- !u!1 &8604693749044115075
 GameObject:
   m_ObjectHideFlags: 0
@@ -7439,7 +7502,6 @@ GameObject:
   - component: {fileID: 8604693749044115078}
   - component: {fileID: 8604693749044115077}
   - component: {fileID: 8604693749044115076}
-  - component: {fileID: 8604693749044115080}
   m_Layer: 0
   m_Name: HeadLight
   m_TagString: Untagged
@@ -7469,8 +7531,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693749044115075}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 0
+  m_Shape: 0
   m_Color: {r: 1, g: 0.9816552, b: 0.73399997, a: 1}
   m_Intensity: 1
   m_Range: 50
@@ -7533,12 +7596,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 3
+  flareBrightness: 1
   lightType: 0
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8604693749044115076
 LensFlare:
   m_ObjectHideFlags: 0
@@ -7553,25 +7622,8 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
---- !u!114 &8604693749044115080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8604693749044115075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd7f59f4129565d499a41bafe5e133dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightRenderer: {fileID: 5177510235479630261}
-  materialIndex: 0
-  noTexture: 1
-  applyAlpha: 0
-  multiplier: 1
 --- !u!1 &8604693749045697769
 GameObject:
   m_ObjectHideFlags: 0
@@ -7598,7 +7650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693749045697769}
   m_LocalRotation: {x: 0.00000008146034, y: -0, z: 3.5527137e-15, w: 1}
-  m_LocalPosition: {x: -0.78912365, y: -0.5713959, z: 1.2895813}
+  m_LocalPosition: {x: -0.6900001, y: -0.5713959, z: 1.2895813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8604693749107208257}
@@ -7626,6 +7678,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7638,6 +7691,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -7725,8 +7779,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693749263359517}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -7789,12 +7844,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 2
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8604693749263359519
 LensFlare:
   m_ObjectHideFlags: 0
@@ -7809,7 +7870,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8604693749334333408
 GameObject:
@@ -12417,11 +12478,11 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d96b3301b035b0b4da53b0754702d33e, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12429,6 +12490,7 @@ ParticleSystemRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -12472,8 +12534,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693749497347996}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.6000001, b: 0, a: 1}
   m_Intensity: 0
   m_Range: 2
@@ -12538,7 +12601,7 @@ LensFlare:
   m_FadeSpeed: 50
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 6
   m_Directional: 0
 --- !u!1 &8604693750032040665
 GameObject:
@@ -12581,8 +12644,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750032040665}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 0
+  m_Shape: 0
   m_Color: {r: 1, g: 0.9816552, b: 0.73399997, a: 1}
   m_Intensity: 1
   m_Range: 50
@@ -12645,12 +12709,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 3
+  flareBrightness: 1
   lightType: 0
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission:
+  - lightRenderer: {fileID: 5177510235479630261}
+    materialIndex: 0
+    noTexture: 1
+    applyAlpha: 0
+    multiplier: 1
+  useEmissionTexture: 1
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8604693750032040667
 LensFlare:
   m_ObjectHideFlags: 0
@@ -12665,7 +12740,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8604693750227549334
 GameObject:
@@ -12708,8 +12783,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750227549334}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -12772,12 +12848,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 2
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8604693750227549335
 LensFlare:
   m_ObjectHideFlags: 0
@@ -12792,7 +12874,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8604693750238496576
 GameObject:
@@ -12805,7 +12887,7 @@ GameObject:
   - component: {fileID: 8604693750238496577}
   - component: {fileID: 8604693750238496578}
   - component: {fileID: 8604693750238496579}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Wheel_RL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12820,7 +12902,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750238496576}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.78912354, y: -0.45400047, z: -1.0682068}
+  m_LocalPosition: {x: -0.69, y: -0.45400047, z: -1.0682068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8604693750663012026}
@@ -12837,10 +12919,10 @@ WheelCollider:
   m_Radius: 0.40332437
   m_SuspensionSpring:
     spring: 50000
-    damper: 2000
+    damper: 2500
     targetPosition: 0.5
   m_SuspensionDistance: 0.25
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 0.1
   m_Mass: 40
   m_WheelDampingRate: 1
   m_ForwardFriction:
@@ -12851,9 +12933,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.25
-    m_ExtremumValue: 1
+    m_ExtremumValue: 1.05
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.8
+    m_AsymptoteValue: 0.85
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!114 &8604693750238496579
@@ -12869,25 +12951,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 8604693750843441411}
-  isGrounded: 0
-  canPower: 0
+  alignWheel: 1
+  drawSkid: 1
+  wheelPosition: {x: 0, y: 0, z: 0}
+  wheelRotation: {x: 0, y: 0, z: 0, w: 1}
+  canPower: 1
   powerMultiplier: 1
   canSteer: 0
   steeringMultiplier: 1
-  canBrake: 0
+  canBrake: 1
   brakingMultiplier: 1
-  canHandbrake: 0
+  canHandbrake: 1
   handbrakeMultiplier: 1
-  width: 0.3
-  offset: 0.05
+  wheelWidth: 0.275
+  wheelOffset: 0
   camber: 0
   caster: 0
   toe: 0
   wheelSlipAmountForward: 0
   wheelSlipAmountSideways: 0
   totalSlip: 0
+  allWheelParticles: []
+  tractionHelpedSidewaysStiffness: 1
   bumpForce: 0
   oldForce: 0
+  RotationValue: 0
+  deflated: 0
+  deflateRadiusMultiplier: 0.8
+  deflatedStiffnessMultiplier: 0.5
 --- !u!1 &8604693750261600655
 GameObject:
   m_ObjectHideFlags: 0
@@ -12899,7 +12990,7 @@ GameObject:
   - component: {fileID: 8604693750261600656}
   - component: {fileID: 8604693750261600657}
   - component: {fileID: 8604693750261600658}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Wheel_FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12914,7 +13005,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750261600655}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.78912354, y: -0.45400047, z: 1.2895813}
+  m_LocalPosition: {x: -0.69, y: -0.45400047, z: 1.2895813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8604693750663012026}
@@ -12931,10 +13022,10 @@ WheelCollider:
   m_Radius: 0.40332437
   m_SuspensionSpring:
     spring: 50000
-    damper: 2000
+    damper: 2500
     targetPosition: 0.5
   m_SuspensionDistance: 0.25
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 0.1
   m_Mass: 40
   m_WheelDampingRate: 1
   m_ForwardFriction:
@@ -12963,25 +13054,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 8604693749045697770}
-  isGrounded: 0
-  canPower: 0
+  alignWheel: 1
+  drawSkid: 1
+  wheelPosition: {x: 0, y: 0, z: 0}
+  wheelRotation: {x: 0, y: 0, z: 0, w: 1}
+  canPower: 1
   powerMultiplier: 1
-  canSteer: 0
+  canSteer: 1
   steeringMultiplier: 1
-  canBrake: 0
+  canBrake: 1
   brakingMultiplier: 1
   canHandbrake: 0
   handbrakeMultiplier: 1
-  width: 0.3
-  offset: 0.05
+  wheelWidth: 0.275
+  wheelOffset: 0
   camber: 0
   caster: 0
   toe: 0
   wheelSlipAmountForward: 0
   wheelSlipAmountSideways: 0
   totalSlip: 0
+  allWheelParticles: []
+  tractionHelpedSidewaysStiffness: 1
   bumpForce: 0
   oldForce: 0
+  RotationValue: 0
+  deflated: 0
+  deflateRadiusMultiplier: 0.8
+  deflatedStiffnessMultiplier: 0.5
 --- !u!1 &8604693750308769387
 GameObject:
   m_ObjectHideFlags: 0
@@ -12993,7 +13093,7 @@ GameObject:
   - component: {fileID: 8604693750308769388}
   - component: {fileID: 8604693750308769389}
   - component: {fileID: 8604693750308769390}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Wheel_FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13008,7 +13108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750308769387}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.78912354, y: -0.454, z: 1.2895813}
+  m_LocalPosition: {x: 0.69, y: -0.454, z: 1.2895813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8604693750663012026}
@@ -13025,10 +13125,10 @@ WheelCollider:
   m_Radius: 0.40332437
   m_SuspensionSpring:
     spring: 50000
-    damper: 2000
+    damper: 2500
     targetPosition: 0.5
   m_SuspensionDistance: 0.25
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 0.1
   m_Mass: 40
   m_WheelDampingRate: 1
   m_ForwardFriction:
@@ -13057,25 +13157,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 8604693750598631244}
-  isGrounded: 0
-  canPower: 0
+  alignWheel: 1
+  drawSkid: 1
+  wheelPosition: {x: 0, y: 0, z: 0}
+  wheelRotation: {x: 0, y: 0, z: 0, w: 1}
+  canPower: 1
   powerMultiplier: 1
-  canSteer: 0
+  canSteer: 1
   steeringMultiplier: 1
-  canBrake: 0
+  canBrake: 1
   brakingMultiplier: 1
   canHandbrake: 0
   handbrakeMultiplier: 1
-  width: 0.3
-  offset: 0.05
+  wheelWidth: 0.275
+  wheelOffset: 0
   camber: 0
   caster: 0
   toe: 0
   wheelSlipAmountForward: 0
   wheelSlipAmountSideways: 0
   totalSlip: 0
+  allWheelParticles: []
+  tractionHelpedSidewaysStiffness: 1
   bumpForce: 0
   oldForce: 0
+  RotationValue: 0
+  deflated: 0
+  deflateRadiusMultiplier: 0.8
+  deflatedStiffnessMultiplier: 0.5
 --- !u!1 &8604693750309450778
 GameObject:
   m_ObjectHideFlags: 0
@@ -13118,7 +13227,7 @@ GameObject:
   - component: {fileID: 8604693750387603390}
   - component: {fileID: 8604693750387603389}
   - component: {fileID: 8604693750387603388}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Wheel_RR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13133,7 +13242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750387603387}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.78912354, y: -0.45400047, z: -1.0682068}
+  m_LocalPosition: {x: 0.69, y: -0.45400047, z: -1.0682068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8604693750663012026}
@@ -13150,10 +13259,10 @@ WheelCollider:
   m_Radius: 0.40332437
   m_SuspensionSpring:
     spring: 50000
-    damper: 2000
+    damper: 2500
     targetPosition: 0.5
   m_SuspensionDistance: 0.25
-  m_ForceAppPointDistance: 0
+  m_ForceAppPointDistance: 0.1
   m_Mass: 40
   m_WheelDampingRate: 1
   m_ForwardFriction:
@@ -13164,9 +13273,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.25
-    m_ExtremumValue: 1
+    m_ExtremumValue: 1.05
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.8
+    m_AsymptoteValue: 0.85
     m_Stiffness: 1
   m_Enabled: 1
 --- !u!114 &8604693750387603388
@@ -13182,25 +13291,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelModel: {fileID: 8604693750946719971}
-  isGrounded: 0
-  canPower: 0
+  alignWheel: 1
+  drawSkid: 1
+  wheelPosition: {x: 0, y: 0, z: 0}
+  wheelRotation: {x: 0, y: 0, z: 0, w: 1}
+  canPower: 1
   powerMultiplier: 1
   canSteer: 0
   steeringMultiplier: 1
-  canBrake: 0
+  canBrake: 1
   brakingMultiplier: 1
-  canHandbrake: 0
+  canHandbrake: 1
   handbrakeMultiplier: 1
-  width: 0.3
-  offset: 0.05
+  wheelWidth: 0.275
+  wheelOffset: 0
   camber: 0
   caster: 0
   toe: 0
   wheelSlipAmountForward: 0
   wheelSlipAmountSideways: 0
   totalSlip: 0
+  allWheelParticles: []
+  tractionHelpedSidewaysStiffness: 1
   bumpForce: 0
   oldForce: 0
+  RotationValue: 0
+  deflated: 0
+  deflateRadiusMultiplier: 0.8
+  deflatedStiffnessMultiplier: 0.5
 --- !u!1 &8604693750443100663
 GameObject:
   m_ObjectHideFlags: 0
@@ -13213,7 +13331,6 @@ GameObject:
   - component: {fileID: 8604693750443100666}
   - component: {fileID: 8604693750443100665}
   - component: {fileID: 8604693750443100664}
-  - component: {fileID: 8604693750443100668}
   m_Layer: 0
   m_Name: BrakeLight
   m_TagString: Untagged
@@ -13229,7 +13346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750443100663}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  m_LocalPosition: {x: -0.701, y: -0.386, z: -1.874}
+  m_LocalPosition: {x: -0.701, y: -0.254, z: -1.874}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5177510235477336921}
@@ -13243,8 +13360,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750443100663}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -13307,12 +13425,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 1
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission:
+  - lightRenderer: {fileID: 5177510235479630271}
+    materialIndex: 0
+    noTexture: 1
+    applyAlpha: 0
+    multiplier: 1
+  useEmissionTexture: 1
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8604693750443100664
 LensFlare:
   m_ObjectHideFlags: 0
@@ -13327,25 +13456,8 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
---- !u!114 &8604693750443100668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8604693750443100663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd7f59f4129565d499a41bafe5e133dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightRenderer: {fileID: 5177510235479630241}
-  materialIndex: 0
-  noTexture: 1
-  applyAlpha: 0
-  multiplier: 1
 --- !u!1 &8604693750456791393
 GameObject:
   m_ObjectHideFlags: 0
@@ -13373,7 +13485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750456791393}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  m_LocalPosition: {x: 0.701, y: -0.386, z: -1.874}
+  m_LocalPosition: {x: 0.701, y: -0.254, z: -1.874}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5177510235477336921}
@@ -13387,8 +13499,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750456791393}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -13451,12 +13564,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 1
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8604693750456791395
 LensFlare:
   m_ObjectHideFlags: 0
@@ -13471,7 +13590,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8604693750528728021
 GameObject:
@@ -13587,17 +13706,17 @@ ConfigurableJoint:
   m_TargetVelocity: {x: 0, y: 0, z: 0}
   m_XDrive:
     serializedVersion: 3
-    positionSpring: 250
+    positionSpring: 500
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_YDrive:
     serializedVersion: 3
-    positionSpring: 250
+    positionSpring: 500
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_ZDrive:
     serializedVersion: 3
-    positionSpring: 250
+    positionSpring: 500
     positionDamper: 20
     maximumForce: 3.4028233e+38
   m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -13605,13 +13724,13 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 100
-    positionDamper: 10
+    positionSpring: 250
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 100
-    positionDamper: 10
+    positionSpring: 250
+    positionDamper: 20
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
     serializedVersion: 3
@@ -13655,7 +13774,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750598631243}
   m_LocalRotation: {x: 0.00000008146034, y: -0, z: 3.5527137e-15, w: 1}
-  m_LocalPosition: {x: 0.7891234, y: -0.5713959, z: 1.2895813}
+  m_LocalPosition: {x: 0.6900001, y: -0.5713959, z: 1.2895813}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8604693749107208257}
@@ -13683,6 +13802,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -13695,6 +13815,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -13776,6 +13897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canControl: 1
   isGrounded: 0
+  overrideBehavior: 0
   FrontLeftWheelTransform: {fileID: 8604693749045697770}
   FrontRightWheelTransform: {fileID: 8604693750598631244}
   RearLeftWheelTransform: {fileID: 8604693750843441411}
@@ -13786,10 +13908,10 @@ MonoBehaviour:
   RearLeftWheelCollider: {fileID: 8604693750238496579}
   RearRightWheelCollider: {fileID: 8604693750387603388}
   ExtraRearWheelsCollider: []
-  allWheelColliders: []
-  overrideWheels: 1
+  hasExtraWheels: 0
+  overrideWheels: 0
+  overrideAllWheels: 0
   poweredWheels: 0
-  applyEngineTorqueToExtraRearWheelColliders: 1
   configureVehicleSubsteps:
     speedThreshold: 10
     stepsBelowThreshold: 5
@@ -13799,15 +13921,66 @@ MonoBehaviour:
   steeringWheelAngleMultiplier: 11
   wheelTypeChoise: 2
   externalController: 0
-  rigid: {fileID: 0}
-  COM: {fileID: 8604693750778613844}
-  brakeTorque: 3500
+  steeringType: 0
+  steerAngleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 40
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 50
+      value: 20
+      inSlope: -0.35541886
+      outSlope: -0.35541886
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 100
+      value: 11
+      inSlope: -0.10217345
+      outSlope: -0.10217345
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.09561304
+      outWeight: 0.28661424
+    - serializedVersion: 3
+      time: 150
+      value: 6
+      inSlope: -0.07598892
+      outSlope: -0.07598892
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 200
+      value: 5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   steerAngle: 40
   highspeedsteerAngle: 5
   highspeedsteerAngleAtspeed: 200
-  antiRollFrontHorizontal: 2000
-  antiRollRearHorizontal: 2000
+  antiRollFrontHorizontal: 2500
+  antiRollRearHorizontal: 2500
   antiRollVertical: 0
+  COM: {fileID: 8604693750778613844}
+  brakeTorque: 3000
   downForce: 25
   speed: 0
   maxspeed: 240
@@ -13815,10 +13988,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.083333336
-      outSlope: 0.083333336
+      time: 1000
+      value: 187.5
+      inSlope: 0.05357143
+      outSlope: 0.05357143
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -13826,8 +13999,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 4500
       value: 375
-      inSlope: 0.016666668
-      outSlope: 0.016666668
+      inSlope: 0.0017857142
+      outSlope: 0.0017857142
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -13850,23 +14023,23 @@ MonoBehaviour:
   minEngineRPM: 1000
   maxEngineRPM: 7000
   engineRPM: 0
-  engineInertia: 0.15
-  engineFriction: 0.15
+  engineRPMRaw: 0
+  engineInertia: 0.2
   useRevLimiter: 1
   useExhaustFlame: 1
   engineRunning: 0
   useSteeringLimiter: 1
   useCounterSteering: 1
-  useSteeringSensitivity: 0
-  counterSteeringFactor: 1
-  steeringSmootherFactor: 15
+  useSteeringSensitivity: 1
+  counterSteeringFactor: 0.5
+  steeringSensitivityFactor: 1
   oldSteeringInput: 0
   steeringDifference: 0
-  useFuelConsumption: 0
+  useFuelConsumption: 1
   fuelTankCapacity: 62
   fuelTank: 62
   fuelConsumptionRate: 0.1
-  useEngineHeat: 0
+  useEngineHeat: 1
   engineHeat: 15
   engineCoolingWaterThreshold: 60
   engineHeatRate: 1
@@ -13930,40 +14103,110 @@ MonoBehaviour:
     handbrakeInput: 0
     boostInput: 0
     gearInput: 0
+    orbitX: 0
+    orbitY: 0
+    scroll: {x: 0, y: 0}
   throttleInput: 0
   brakeInput: 0
   steerInput: 0
+  counterSteerInput: 0
   clutchInput: 0
   handbrakeInput: 0
   boostInput: 0
   fuelInput: 0
   cutGas: 0
+  permanentGas: 0
   lowBeamHeadLightsOn: 0
   highBeamHeadLightsOn: 0
   indicatorsOn: 0
   indicatorTimer: 0
+  damage:
+    automaticInstallation: 0
+    meshDeformation: 1
+    deformationMode: 0
+    damageResolution: 100
+    damageFilter:
+      serializedVersion: 2
+      m_Bits: 7991
+    randomizeVertices: 1
+    damageRadius: 0.5
+    damageMultiplier: 1
+    maximumDamage: 0.5
+    repairNow: 0
+    repaired: 1
+    recalculateNormals: 1
+    recalculateBounds: 1
+    wheelDamage: 1
+    wheelDamageRadius: 1
+    wheelDamageMultiplier: 1
+    wheelDetachment: 1
+    lightDamage: 1
+    lightDamageRadius: 0.5
+    lightDamageMultiplier: 1
+    partDamage: 1
+    meshFilters:
+    - {fileID: 5177510235478631269}
+    - {fileID: 5177510235478631271}
+    - {fileID: 5177510235478631265}
+    - {fileID: 5177510235478631267}
+    - {fileID: 5177510235478631277}
+    - {fileID: 5177510235478631279}
+    - {fileID: 5177510235478631273}
+    - {fileID: 5177510235478631275}
+    - {fileID: 5177510235478631285}
+    - {fileID: 5177510235478631287}
+    - {fileID: 5177510235478631281}
+    - {fileID: 5177510235478631293}
+    - {fileID: 5177510235478631295}
+    - {fileID: 5177510235478631289}
+    - {fileID: 5177510235478631291}
+    - {fileID: 5177510235478631173}
+    - {fileID: 5177510235478631175}
+    - {fileID: 5177510235478631171}
+    - {fileID: 5177510235478631181}
+    - {fileID: 5177510235478631191}
+    detachableParts:
+    - {fileID: 491902162}
+    - {fileID: 55729969}
+    - {fileID: 1485849597}
+    - {fileID: 728469555}
+    - {fileID: 652899107}
+    - {fileID: 1841359061}
+    lights:
+    - {fileID: 8604693749044115077}
+    - {fileID: 8604693750032040668}
+    - {fileID: 8604693750443100665}
+    - {fileID: 8604693750456791396}
+    - {fileID: 8604693750227549336}
+    - {fileID: 8604693749263359520}
+    - {fileID: 8604693750664223365}
+    - {fileID: 8604693750650246592}
+    wheels:
+    - {fileID: 8604693750261600658}
+    - {fileID: 8604693750308769390}
+    - {fileID: 8604693750238496579}
+    - {fileID: 8604693750387603388}
+    damageData:
+      Hood: []
+      Trunk: []
+      Door: []
+      Bumper_F: []
+      Bumper_R: []
+      hoodDamage: 0
+      trunkDamage: 0
+      doorDamage: 0
+      bumper_FDamage: 0
+      bumper_RDamage: 0
   useDamage: 1
-  wheelDamage: 0
-  wheelDamageRadius: 1
-  wheelDamageMultiplier: 0.1
-  deformableMeshFilters: []
-  damageFilter:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  randomizeVertices: 1
-  damageRadius: 0.5
-  repairNow: 0
-  repaired: 1
-  maximumDamage: 0.5
-  damageMultiplier: 1
+  useCollisionParticles: 1
+  useCollisionAudio: 1
   maximumContactSparkle: 5
-  detachableParts: []
   velocityDirection: {fileID: 0}
   steeringDirection: {fileID: 0}
   velocityAngle: 0
-  ABS: 1
-  TCS: 1
-  ESP: 1
+  ABS: 0
+  TCS: 0
+  ESP: 0
   steeringHelper: 1
   tractionHelper: 1
   angularDragHelper: 0
@@ -13978,6 +14221,7 @@ MonoBehaviour:
   ABSAct: 0
   TCSAct: 0
   ESPAct: 0
+  ESPBroken: 0
   frontSlip: 0
   rearSlip: 0
   underSteering: 0
@@ -14028,8 +14272,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750650246589}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.5, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -14092,12 +14337,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 3
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8604693750650246591
 LensFlare:
   m_ObjectHideFlags: 0
@@ -14112,7 +14363,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8604693750663012025
 GameObject:
@@ -14189,8 +14440,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750664223363}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 2
+  m_Shape: 0
   m_Color: {r: 1, g: 0.5, b: 0, a: 1}
   m_Intensity: 1
   m_Range: 2
@@ -14253,12 +14505,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196a38f32d421d44eb21abcc703e8589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carController: {fileID: 0}
   defaultIntensity: 0
-  flareBrightness: 1.5
+  flareBrightness: 1
   lightType: 3
   inertia: 1
   flare: {fileID: 12100000, guid: ce173f431d1c4084a9ae42f80a202c16, type: 2}
   refreshRate: 30
+  emission: []
+  useEmissionTexture: 0
+  strength: 100
+  isBreakable: 1
+  breakPoint: 35
 --- !u!123 &8604693750664223364
 LensFlare:
   m_ObjectHideFlags: 0
@@ -14273,7 +14531,7 @@ LensFlare:
   m_FadeSpeed: 20
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 262
+    m_Bits: 3334
   m_Directional: 0
 --- !u!1 &8604693750778613843
 GameObject:
@@ -14331,7 +14589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750843441410}
   m_LocalRotation: {x: 0.00000008146034, y: -0, z: 3.5527137e-15, w: 1}
-  m_LocalPosition: {x: -0.7891234, y: -0.5713959, z: -1.0682068}
+  m_LocalPosition: {x: -0.6899999, y: -0.5713959, z: -1.0682068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8604693749107208257}
@@ -14359,6 +14617,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14371,6 +14630,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -14409,7 +14669,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604693750946719970}
   m_LocalRotation: {x: 0.00000008146034, y: -0, z: 3.5527137e-15, w: 1}
-  m_LocalPosition: {x: 0.78912365, y: -0.5713959, z: -1.0682068}
+  m_LocalPosition: {x: 0.6899999, y: -0.5713959, z: -1.0682068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8604693749107208257}
@@ -14437,6 +14697,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -14449,6 +14710,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

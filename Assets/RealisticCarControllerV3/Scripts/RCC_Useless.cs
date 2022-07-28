@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -13,61 +13,64 @@ using System.Collections;
 
 public class RCC_Useless : MonoBehaviour {
 
-	public Useless useless;
-	public enum Useless{MainController, MobileControllers, Behavior, Graphics}
+    public Useless useless;
+    public enum Useless { MainController, MobileControllers, Behavior, Graphics }
 
-	// Use this for initialization
-	void Awake () {
+    // Use this for initialization
+    void Awake() {
 
-		int type = 0;
+        int type = 0;
 
-		if(useless == Useless.Behavior){
+        if (useless == Useless.Behavior) {
 
-			type = RCC_Settings.Instance.behaviorSelectedIndex;
+            type = RCC_Settings.Instance.behaviorSelectedIndex;
 
-		}if(useless == Useless.MainController){
+        }
+        if (useless == Useless.MainController) {
 
-			type = RCC_Settings.Instance.controllerSelectedIndex;
+            //type = RCC_Settings.Instance.controllerSelectedIndex;
 
-		}if(useless == Useless.MobileControllers){
+        }
+        if (useless == Useless.MobileControllers) {
 
-			switch (RCC_Settings.Instance.mobileController) {
+            switch (RCC_Settings.Instance.mobileController) {
 
-			case RCC_Settings.MobileController.TouchScreen:
+                case RCC_Settings.MobileController.TouchScreen:
 
-				type = 0;
+                    type = 0;
 
-				break;
+                    break;
 
-			case RCC_Settings.MobileController.Gyro:
+                case RCC_Settings.MobileController.Gyro:
 
-				type = 1;
+                    type = 1;
 
-				break;
+                    break;
 
-			case RCC_Settings.MobileController.SteeringWheel:
+                case RCC_Settings.MobileController.SteeringWheel:
 
-				type = 2;
+                    type = 2;
 
-				break;
+                    break;
 
-			case RCC_Settings.MobileController.Joystick:
+                case RCC_Settings.MobileController.Joystick:
 
-				type = 3;
+                    type = 3;
 
-				break;
+                    break;
 
-			}
+            }
 
-		}if(useless == Useless.Graphics){
+        }
+        if (useless == Useless.Graphics) {
 
-			type = QualitySettings.GetQualityLevel ();
+            type = QualitySettings.GetQualityLevel();
 
-		}
+        }
 
-		GetComponent<Dropdown>().value = type;
-		GetComponent<Dropdown>().RefreshShownValue();
-	
-	}
+        GetComponent<Dropdown>().value = type;
+        GetComponent<Dropdown>().RefreshShownValue();
+
+    }
 
 }

@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -18,315 +18,299 @@ using UnityEngine.UI;
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Misc/RCC Visual Dashboard Objects")]
 public class RCC_DashboardObjects : MonoBehaviour {
 
-	// Getting an Instance of Main Shared RCC Settings.
-	#region RCC Settings Instance
+    private RCC_CarControllerV3 carController;
 
-	private RCC_Settings RCCSettingsInstance;
-	private RCC_Settings RCCSettings {
-		get {
-			if (RCCSettingsInstance == null) {
-				RCCSettingsInstance = RCC_Settings.Instance;
-				return RCCSettingsInstance;
-			}
-			return RCCSettingsInstance;
-		}
-	}
+    [System.Serializable]
+    public class RPMDial {
 
-	#endregion
+        public GameObject dial;
+        public float multiplier = .05f;
+        public RotateAround rotateAround = RotateAround.Z;
+        private Quaternion dialOrgRotation = Quaternion.identity;
+        public Text text;
 
-	private RCC_CarControllerV3 carController;
+        public void Init() {
 
-	[System.Serializable]
-	public class RPMDial{
+            if (dial)
+                dialOrgRotation = dial.transform.localRotation;
 
-		public GameObject dial;
-		public float multiplier = .05f;
-		public RotateAround rotateAround = RotateAround.Z;
-		private Quaternion dialOrgRotation = Quaternion.identity;
-		public Text text;
+        }
 
-		public void Init(){
+        public void Update(float value) {
 
-			if(dial)
-				dialOrgRotation = dial.transform.localRotation;
-			
-		}
+            Vector3 targetAxis = Vector3.forward;
 
-		public void Update(float value){
+            switch (rotateAround) {
 
-			Vector3 targetAxis = Vector3.forward;
+                case RotateAround.X:
 
-			switch (rotateAround) {
+                    targetAxis = Vector3.right;
 
-			case RotateAround.X:
+                    break;
 
-				targetAxis = Vector3.right;
+                case RotateAround.Y:
 
-				break;
+                    targetAxis = Vector3.up;
 
-			case RotateAround.Y:
+                    break;
 
-				targetAxis = Vector3.up;
+                case RotateAround.Z:
 
-				break;
+                    targetAxis = Vector3.forward;
 
-			case RotateAround.Z:
+                    break;
 
-				targetAxis = Vector3.forward;
+            }
 
-				break;
+            dial.transform.localRotation = dialOrgRotation * Quaternion.AngleAxis(-multiplier * value, targetAxis);
 
-			}
+            if (text)
+                text.text = value.ToString("F0");
 
-			dial.transform.localRotation = dialOrgRotation * Quaternion.AngleAxis (-multiplier * value, targetAxis);
+        }
 
-			if (text)
-				text.text = value.ToString ("F0");
+    }
 
-		}
+    [System.Serializable]
+    public class SpeedoMeterDial {
 
-	}
+        public GameObject dial;
+        public float multiplier = 1f;
+        public RotateAround rotateAround = RotateAround.Z;
+        private Quaternion dialOrgRotation = Quaternion.identity;
+        public Text text;
 
-	[System.Serializable]
-	public class SpeedoMeterDial{
+        public void Init() {
 
-		public GameObject dial;
-		public float multiplier = 1f;
-		public RotateAround rotateAround = RotateAround.Z;
-		private Quaternion dialOrgRotation = Quaternion.identity;
-		public Text text;
+            if (dial)
+                dialOrgRotation = dial.transform.localRotation;
 
-		public void Init(){
+        }
 
-			if(dial)
-				dialOrgRotation = dial.transform.localRotation;
+        public void Update(float value) {
 
-		}
+            Vector3 targetAxis = Vector3.forward;
 
-		public void Update(float value){
+            switch (rotateAround) {
 
-			Vector3 targetAxis = Vector3.forward;
+                case RotateAround.X:
 
-			switch (rotateAround) {
+                    targetAxis = Vector3.right;
 
-			case RotateAround.X:
+                    break;
 
-				targetAxis = Vector3.right;
+                case RotateAround.Y:
 
-				break;
+                    targetAxis = Vector3.up;
 
-			case RotateAround.Y:
+                    break;
 
-				targetAxis = Vector3.up;
+                case RotateAround.Z:
 
-				break;
+                    targetAxis = Vector3.forward;
 
-			case RotateAround.Z:
+                    break;
 
-				targetAxis = Vector3.forward;
+            }
 
-				break;
+            dial.transform.localRotation = dialOrgRotation * Quaternion.AngleAxis(-multiplier * value, targetAxis);
 
-			}
+            if (text)
+                text.text = value.ToString("F0");
 
-			dial.transform.localRotation = dialOrgRotation * Quaternion.AngleAxis (-multiplier * value, targetAxis);
+        }
 
-			if (text)
-				text.text = value.ToString ("F0");
+    }
 
-		}
+    [System.Serializable]
+    public class FuelDial {
 
-	}
+        public GameObject dial;
+        public float multiplier = .1f;
+        public RotateAround rotateAround = RotateAround.Z;
+        private Quaternion dialOrgRotation = Quaternion.identity;
+        public Text text;
 
-	[System.Serializable]
-	public class FuelDial{
+        public void Init() {
 
-		public GameObject dial;
-		public float multiplier = .1f;
-		public RotateAround rotateAround = RotateAround.Z;
-		private Quaternion dialOrgRotation = Quaternion.identity;
-		public Text text;
+            if (dial)
+                dialOrgRotation = dial.transform.localRotation;
 
-		public void Init(){
+        }
 
-			if(dial)
-				dialOrgRotation = dial.transform.localRotation;
+        public void Update(float value) {
 
-		}
+            Vector3 targetAxis = Vector3.forward;
 
-		public void Update(float value){
+            switch (rotateAround) {
 
-			Vector3 targetAxis = Vector3.forward;
+                case RotateAround.X:
 
-			switch (rotateAround) {
+                    targetAxis = Vector3.right;
 
-			case RotateAround.X:
+                    break;
 
-				targetAxis = Vector3.right;
+                case RotateAround.Y:
 
-				break;
+                    targetAxis = Vector3.up;
 
-			case RotateAround.Y:
+                    break;
 
-				targetAxis = Vector3.up;
+                case RotateAround.Z:
 
-				break;
+                    targetAxis = Vector3.forward;
 
-			case RotateAround.Z:
+                    break;
 
-				targetAxis = Vector3.forward;
+            }
 
-				break;
+            dial.transform.localRotation = dialOrgRotation * Quaternion.AngleAxis(-multiplier * value, targetAxis);
 
-			}
+            if (text)
+                text.text = value.ToString("F0");
 
-			dial.transform.localRotation = dialOrgRotation * Quaternion.AngleAxis (-multiplier * value, targetAxis);
+        }
 
-			if (text)
-				text.text = value.ToString ("F0");
+    }
 
-		}
+    [System.Serializable]
+    public class HeatDial {
 
-	}
+        public GameObject dial;
+        public float multiplier = .1f;
+        public RotateAround rotateAround = RotateAround.Z;
+        private Quaternion dialOrgRotation = Quaternion.identity;
+        public Text text;
 
-	[System.Serializable]
-	public class HeatDial{
+        public void Init() {
 
-		public GameObject dial;
-		public float multiplier = .1f;
-		public RotateAround rotateAround = RotateAround.Z;
-		private Quaternion dialOrgRotation = Quaternion.identity;
-		public Text text;
+            if (dial)
+                dialOrgRotation = dial.transform.localRotation;
 
-		public void Init(){
+        }
 
-			if(dial)
-				dialOrgRotation = dial.transform.localRotation;
+        public void Update(float value) {
 
-		}
+            Vector3 targetAxis = Vector3.forward;
 
-		public void Update(float value){
+            switch (rotateAround) {
 
-			Vector3 targetAxis = Vector3.forward;
+                case RotateAround.X:
 
-			switch (rotateAround) {
+                    targetAxis = Vector3.right;
 
-			case RotateAround.X:
+                    break;
 
-				targetAxis = Vector3.right;
+                case RotateAround.Y:
 
-				break;
+                    targetAxis = Vector3.up;
 
-			case RotateAround.Y:
+                    break;
 
-				targetAxis = Vector3.up;
+                case RotateAround.Z:
 
-				break;
+                    targetAxis = Vector3.forward;
 
-			case RotateAround.Z:
+                    break;
 
-				targetAxis = Vector3.forward;
+            }
 
-				break;
+            dial.transform.localRotation = dialOrgRotation * Quaternion.AngleAxis(-multiplier * value, targetAxis);
 
-			}
+            if (text)
+                text.text = value.ToString("F0");
 
-			dial.transform.localRotation = dialOrgRotation * Quaternion.AngleAxis (-multiplier * value, targetAxis);
+        }
 
-			if (text)
-				text.text = value.ToString ("F0");
+    }
 
-		}
+    [System.Serializable]
+    public class InteriorLight {
 
-	}
+        public Light light;
+        public float intensity = 1f;
+        public LightRenderMode renderMode = LightRenderMode.Auto;
 
-	[System.Serializable]
-	public class InteriorLight{
+        public void Init() {
 
-		public Light light;
-		public float intensity = 1f;
-		public LightRenderMode renderMode = LightRenderMode.Auto;
+            if (RCC_Settings.Instance.useLightsAsVertexLights)
+                renderMode = LightRenderMode.ForceVertex;
+            else
+                renderMode = LightRenderMode.ForcePixel;
 
-		public void Init(){
+            light.renderMode = renderMode;
 
-			if(RCC_Settings.Instance.useLightsAsVertexLights)
-				renderMode = LightRenderMode.ForceVertex;
-			else
-				renderMode = LightRenderMode.ForcePixel;
+        }
 
-			light.renderMode = renderMode;
+        public void Update(bool state) {
 
-		}
+            if (!light.enabled)
+                light.enabled = true;
 
-		public void Update(bool state){
+            light.intensity = state ? intensity : 0f;
 
-			if (!light.enabled)
-				light.enabled = true;
+        }
 
-			light.intensity = state ? intensity : 0f;
+    }
 
-		}
+    [Space()]
+    public RPMDial rPMDial;
+    [Space()]
+    public SpeedoMeterDial speedDial;
+    [Space()]
+    public FuelDial fuelDial;
+    [Space()]
+    public HeatDial heatDial;
+    [Space()]
+    public InteriorLight[] interiorLights;
 
-	}
+    public enum RotateAround { X, Y, Z }
 
-	[Space()]
-	public RPMDial rPMDial;
-	[Space()]
-	public SpeedoMeterDial speedDial;
-	[Space()]
-	public FuelDial fuelDial;
-	[Space()]
-	public HeatDial heatDial;
-	[Space()]
-	public InteriorLight[] interiorLights;
+    void Awake() {
 
-	public enum RotateAround{X, Y, Z}
+        carController = GetComponentInParent<RCC_CarControllerV3>();
 
-	void Awake () {
+        rPMDial.Init();
+        speedDial.Init();
+        fuelDial.Init();
+        heatDial.Init();
 
-		carController = GetComponentInParent<RCC_CarControllerV3> ();
+        for (int i = 0; i < interiorLights.Length; i++)
+            interiorLights[i].Init();
 
-		rPMDial.Init ();
-		speedDial.Init ();
-		fuelDial.Init ();
-		heatDial.Init ();
+    }
 
-		for (int i = 0; i < interiorLights.Length; i++)
-			interiorLights [i].Init ();
+    void Update() {
 
-	}
+        if (!carController)
+            return;
 
-	void Update(){
+        Dials();
+        Lights();
 
-		if (!carController)
-			return;
+    }
 
-		Dials ();
-		Lights ();
+    void Dials() {
 
-	}
-	
-	void Dials () {
+        if (rPMDial.dial != null)
+            rPMDial.Update(carController.engineRPM);
 
-		if (rPMDial.dial != null)
-			rPMDial.Update (carController.engineRPM);
+        if (speedDial.dial != null)
+            speedDial.Update(carController.speed);
 
-		if (speedDial.dial != null)
-			speedDial.Update (carController.speed);
+        if (fuelDial.dial != null)
+            fuelDial.Update(carController.fuelTank);
 
-		if (fuelDial.dial != null)
-			fuelDial.Update (carController.fuelTank);
+        if (heatDial.dial != null)
+            heatDial.Update(carController.engineHeat);
 
-		if (heatDial.dial != null)
-			heatDial.Update (carController.engineHeat);
+    }
 
-	}
+    void Lights() {
 
-	void Lights (){
+        for (int i = 0; i < interiorLights.Length; i++)
+            interiorLights[i].Update(carController.lowBeamHeadLightsOn);
 
-		for (int i = 0; i < interiorLights.Length; i++)
-			interiorLights [i].Update (carController.lowBeamHeadLightsOn);
-
-	}
+    }
 
 }

@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -16,88 +16,92 @@ using System.Collections;
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Misc/RCC Visual Axle (Suspension Distance Based)")]
 public class RCC_SuspensionArm : MonoBehaviour {
 
-	public RCC_WheelCollider wheelcollider;
+    public RCC_WheelCollider wheelcollider;
 
-	public SuspensionType suspensionType;
-	public enum SuspensionType{Position, Rotation}
+    public SuspensionType suspensionType;
+    public enum SuspensionType { Position, Rotation }
 
-	public Axis axis;
-	public enum Axis {X, Y, Z}
+    public Axis axis;
+    public enum Axis { X, Y, Z }
 
-	private Vector3 orgPos;
-	private Vector3 orgRot;
+    private Vector3 orgPos;
+    private Vector3 orgRot;
 
-	private float totalSuspensionDistance = 0;
+    private float totalSuspensionDistance = 0;
 
-	public float offsetAngle = 30;
-	public float angleFactor = 150;
-	
-	void Start () {
+    public float offsetAngle = 30;
+    public float angleFactor = 150;
 
-		orgPos = transform.localPosition;
-		orgRot = transform.localEulerAngles;
+    void Start() {
 
-		totalSuspensionDistance = GetSuspensionDistance ();
+        orgPos = transform.localPosition;
+        orgRot = transform.localEulerAngles;
 
-	}
+        totalSuspensionDistance = GetSuspensionDistance();
 
-	void Update () {
-		
-		float suspensionCourse = GetSuspensionDistance () - totalSuspensionDistance;
+    }
 
-		transform.localPosition = orgPos;
-		transform.localEulerAngles = orgRot;
+    void Update() {
 
-		switch (suspensionType) {
+        if (!wheelcollider)
+            return;
 
-		case SuspensionType.Position:
+        if (!wheelcollider.gameObject.activeSelf)
+            return;
 
-			switch(axis){
+        float suspensionCourse = GetSuspensionDistance() - totalSuspensionDistance;
 
-			case Axis.X:
-				transform.position += transform.right * suspensionCourse;
-				break;
-			case Axis.Y:
-				transform.position += transform.up * suspensionCourse;
-				break;
-			case Axis.Z:
-				transform.position += transform.forward * suspensionCourse;
-				break;
+        transform.localPosition = orgPos;
+        transform.localEulerAngles = orgRot;
 
-			}
+        switch (suspensionType) {
 
-			break;
+            case SuspensionType.Position:
 
-		case SuspensionType.Rotation:
+                switch (axis) {
 
-			switch (axis) {
+                    case Axis.X:
+                        transform.position += transform.right * suspensionCourse;
+                        break;
+                    case Axis.Y:
+                        transform.position += transform.up * suspensionCourse;
+                        break;
+                    case Axis.Z:
+                        transform.position += transform.forward * suspensionCourse;
+                        break;
 
-			case Axis.X:
-				transform.Rotate (Vector3.right, suspensionCourse * angleFactor - offsetAngle, Space.Self);
-				break;
-			case Axis.Y:
-				transform.Rotate (Vector3.up, suspensionCourse * angleFactor - offsetAngle, Space.Self);
-				break;
-			case Axis.Z:
-				transform.Rotate (Vector3.forward, suspensionCourse * angleFactor - offsetAngle, Space.Self);
-				break;
+                }
 
-			}
+                break;
 
-			break;
+            case SuspensionType.Rotation:
 
-		}
+                switch (axis) {
 
-	}
-		
-	private float GetSuspensionDistance() {
-		
-		Quaternion quat;
-		Vector3 position;
-		wheelcollider.wheelCollider.GetWorldPose(out position, out quat);
-		Vector3 local = wheelcollider.transform.InverseTransformPoint (position);
-		return local.y;
+                    case Axis.X:
+                        transform.Rotate(Vector3.right, suspensionCourse * angleFactor - offsetAngle, Space.Self);
+                        break;
+                    case Axis.Y:
+                        transform.Rotate(Vector3.up, suspensionCourse * angleFactor - offsetAngle, Space.Self);
+                        break;
+                    case Axis.Z:
+                        transform.Rotate(Vector3.forward, suspensionCourse * angleFactor - offsetAngle, Space.Self);
+                        break;
 
-	}
+                }
+
+                break;
+
+        }
+
+    }
+
+    private float GetSuspensionDistance() {
+
+        wheelcollider.wheelCollider.GetWorldPose(out Vector3 position, out Quaternion quat);
+        Vector3 local = wheelcollider.transform.InverseTransformPoint(position);
+        return local.y;
+
+    }
 
 }

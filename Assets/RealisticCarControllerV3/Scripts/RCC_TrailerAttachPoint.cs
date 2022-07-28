@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -14,26 +14,26 @@ using UnityEngine;
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/Misc/RCC Trailer Attacher")]
 public class RCC_TrailerAttachPoint : MonoBehaviour {
 
-	void OnTriggerEnter(Collider col){
+    void OnTriggerEnter(Collider col) {
 
-		RCC_TrailerAttachPoint otherAttacher = col.gameObject.GetComponent<RCC_TrailerAttachPoint> ();
+        RCC_TrailerAttachPoint otherAttacher = col.gameObject.GetComponent<RCC_TrailerAttachPoint>();
 
-		if (!otherAttacher)
-			return;
+        if (!otherAttacher)
+            return;
 
-		RCC_CarControllerV3 otherVehicle = otherAttacher.gameObject.GetComponentInParent<RCC_CarControllerV3> ();
+        RCC_CarControllerV3 otherVehicle = otherAttacher.gameObject.GetComponentInParent<RCC_CarControllerV3>();
 
-		if (!otherVehicle)
-			return;
-		
-		GetComponentInParent<ConfigurableJoint>().transform.SendMessage ("AttachTrailer", otherVehicle, SendMessageOptions.DontRequireReceiver);
+        if (!otherVehicle)
+            return;
 
-	}
+        GetComponentInParent<ConfigurableJoint>().transform.SendMessage("AttachTrailer", otherVehicle, SendMessageOptions.DontRequireReceiver);
+
+    }
 
     private void Reset() {
 
-		if (GetComponent<BoxCollider>() == null)
-			gameObject.AddComponent<BoxCollider>().isTrigger = true;
+        if (GetComponent<BoxCollider>() == null)
+            gameObject.AddComponent<BoxCollider>().isTrigger = true;
 
     }
 

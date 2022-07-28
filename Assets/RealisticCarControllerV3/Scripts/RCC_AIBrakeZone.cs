@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -15,7 +15,8 @@ using System.Collections;
 /// </summary>
 [AddComponentMenu("BoneCracker Games/Realistic Car Controller/AI/RCC AI Brake Zone")]
 public class RCC_AIBrakeZone : MonoBehaviour {
-	
-	public float targetSpeed = 50;
-	
+
+    public float targetSpeed = 50;
+    public float distance = 100f;
+
 }

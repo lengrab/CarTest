@@ -1,7 +1,7 @@
 ﻿//----------------------------------------------
 //            Realistic Car Controller
 //
-// Copyright © 2014 - 2021 BoneCracker Games
+// Copyright © 2014 - 2022 BoneCracker Games
 // http://www.bonecrackergames.com
 // Buğra Özdoğanlar
 //
@@ -18,76 +18,97 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class RCC_AIO : MonoBehaviour {
 
-	// Instance of the script.
-	private static RCC_AIO instance;
+    // Instance of the script.
+    private static RCC_AIO instance;
 
-	public GameObject levels;			//	UI levels menu.
-	public GameObject back;				//	UI back button.
+    public GameObject levels;           //	UI levels menu.
+    public GameObject photonLevels;
+    public GameObject BCGLevels;
+    public GameObject back;             //	UI back button.
 
-	private AsyncOperation async;		//Async.
-	public Slider slider;						//	Loading slider.
+    private AsyncOperation async;       //Async.
+    public Slider slider;                       //	Loading slider.
 
-	void Start () {
+    void Start() {
 
-		// Getting instance. If same exists, destroy it.
-		if (instance) {
-			Destroy (gameObject);
-		} else {
-			instance = this;
-			DontDestroyOnLoad (gameObject);
-		}
+        // Getting instance. If same exists, destroy it.
+        if (instance) {
 
-	}
+            Destroy(gameObject);
+            return;
 
-	void Update(){
+        } else {
 
-		// If level load is in progress, enable and adjust loading slider. Otherwise, disable it.
-		if (async != null && !async.isDone) {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
 
-			if(!slider.gameObject.activeSelf)
-				slider.gameObject.SetActive (true);
-			
-			slider.value = async.progress;
+        }
 
-		} else {
+#if !RCC_PHOTON
+        Toggle[] pbuttons = photonLevels.GetComponentsInChildren<Toggle>();
 
-			if(slider.gameObject.activeSelf)
-				slider.gameObject.SetActive (false);
+        foreach (var button in pbuttons)
+            button.interactable = false;
+#endif
 
-		}
+#if !BCG_ENTEREXIT
+        Toggle[] bbuttons = BCGLevels.GetComponentsInChildren<Toggle>();
 
-	}
+        foreach (var button in bbuttons)
+            button.interactable = false;
+#endif
 
-	/// <summary>
-	/// Loads the target level.
-	/// </summary>
-	/// <param name="levelName">Level name.</param>
-	public void LoadLevel (string levelName) {
+    }
 
-		async = SceneManager.LoadSceneAsync (levelName);
+    void Update() {
 
-	}
+        // If level load is in progress, enable and adjust loading slider. Otherwise, disable it.
+        if (async != null && !async.isDone) {
 
-	/// <summary>
-	/// Toggles the UI menu.
-	/// </summary>
-	/// <param name="menu">Menu.</param>
-	public void ToggleMenu (GameObject menu) {
+            if (!slider.gameObject.activeSelf)
+                slider.gameObject.SetActive(true);
 
-		levels.SetActive (false);
-		back.SetActive (false);
+            slider.value = async.progress;
 
-		menu.SetActive (true);
+        } else {
 
-	}
+            if (slider.gameObject.activeSelf)
+                slider.gameObject.SetActive(false);
 
-	/// <summary>
-	/// Closes application.
-	/// </summary>
-	public void Quit () {
+        }
 
-		Application.Quit ();
+    }
 
-	}
+    /// <summary>
+    /// Loads the target level.
+    /// </summary>
+    /// <param name="levelName">Level name.</param>
+    public void LoadLevel(string levelName) {
+
+        async = SceneManager.LoadSceneAsync(levelName, LoadSceneMode.Single);
+
+    }
+
+    /// <summary>
+    /// Toggles the UI menu.
+    /// </summary>
+    /// <param name="menu">Menu.</param>
+    public void ToggleMenu(GameObject menu) {
+
+        levels.SetActive(false);
+        back.SetActive(false);
+
+        menu.SetActive(true);
+
+    }
+
+    /// <summary>
+    /// Closes application.
+    /// </summary>
+    public void Quit() {
+
+        Application.Quit();
+
+    }
 
 }
